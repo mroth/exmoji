@@ -8,9 +8,10 @@ defmodule Exmoji.EmojiChar do
     text: nil
   )
 
-  def render(char) do
-    char.unified
-    |> to_string
+  alias Exmoji.EmojiChar
+
+  def render(%EmojiChar{unified: unified}) do
+    unified
     |> String.split("-")
     |> Enum.map(&String.to_integer(&1, 16))
     |> to_string
@@ -19,8 +20,8 @@ defmodule Exmoji.EmojiChar do
   @doc """
   Is the EmojiChar represented by a doublebyte codepoint in Unicode?
   """
-  def doublebyte?(char) do
-    char.unified |> to_string |> String.match?(~r/-/)
+  def doublebyte?(%EmojiChar{unified: id}) do
+    id |> String.match?(~r/-/)
   end
 
   @doc """

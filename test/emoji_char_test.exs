@@ -4,10 +4,10 @@ defmodule EmojiCharTest do
   alias Exmoji.EmojiChar
 
   setup do
-    invader   = %EmojiChar{unified: '1F47E'}
-    usflag    = %EmojiChar{unified: '1F1FA-1F1F8'}
-    hourglass = %EmojiChar{unified: '231B', variations: ['231B-FE0F']}
-    cloud     = %EmojiChar{unified: '2601', variations: ['2601-FE0F']}
+    invader   = %EmojiChar{unified: "1F47E"}
+    usflag    = %EmojiChar{unified: "1F1FA-1F1F8"}
+    hourglass = %EmojiChar{unified: "231B", variations: ["231B-FE0F"]}
+    cloud     = %EmojiChar{unified: "2601", variations: ["2601-FE0F"]}
     {:ok, [invader: invader, usflag: usflag, hourglass: hourglass, cloud: cloud]}
   end
 
