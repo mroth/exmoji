@@ -39,4 +39,14 @@ defmodule EmojiCharTest do
     assert EmojiChar.variant?(examples[:usflag]) == false
   end
 
+  #
+  # #variant
+  #
+  test "should return the most likely variant encoding ID representation", examples do
+    assert EmojiChar.variant(examples[:hourglass]) == "231B-FE0F"
+  end
+  test "should return nil if there is no variant encoding for a char", examples do
+    assert EmojiChar.variant(examples[:usflag]) == nil
+  end
+
 end

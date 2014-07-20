@@ -27,8 +27,25 @@ defmodule Exmoji.EmojiChar do
   @doc """
   Does the EmojiChar have an alternate Unicode variant encoding?
   """
-  def variant?(char) do
-    length(char.variations) > 0
+  def variant?(%EmojiChar{variations: variations}) do
+    length(variations) > 0
+  end
+
+  @doc """
+  Returns the most likely variant-encoding for an EmojiChar. (For now we only
+  know of one possible variant encoding for certain characters, but there could
+  be others in the future.)
+
+  This is typically used to force Emoji rendering for characters that could be
+  represented in standard font glyphs on certain operating systems.
+
+  The resulting encoded string will be two codepoints, or three codepoints for
+  doublebyte Emoji characters.
+
+  If there is no variant-encoding for a character, returns nil.
+  """
+  def variant(%EmojiChar{variations: variations}) do
+    List.first variations
   end
 
 end
