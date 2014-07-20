@@ -1,0 +1,2 @@
+defmodule Exmoji do
+end
