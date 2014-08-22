@@ -4,7 +4,7 @@ defmodule Exmoji.Mixfile do
   def project do
     [app: :exmoji,
      version: "0.0.1",
-     elixir: "~> 0.14.3",
+     elixir: "~> 0.15.1",
      deps: deps]
   end
 
@@ -25,6 +25,6 @@ defmodule Exmoji.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:jazz, "~> 0.1.2"}]
+    [{:jazz, "~> 0.2.0"}]
   end
 end
