@@ -5,7 +5,10 @@ defmodule Exmoji do
   #
   # Read and parse the Emoji library from our vendored data file.
   #
-  rawfile = File.read!("vendor/emoji-data/emoji.json")
+  vendor_data_file = "vendor/emoji-data/emoji.json"
+  @external_resource vendor_data_file
+
+  rawfile = File.read!(vendor_data_file)
   rawdata = Jazz.Decode.it! rawfile, keys: :atoms
   emoji_chars = for char <- rawdata do
     %EmojiChar{
