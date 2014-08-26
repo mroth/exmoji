@@ -27,6 +27,20 @@ defmodule Exmoji do
   """
   def all, do: @emoji_chars
 
+  @doc """
+  Returns a list of all EmojiChars that are represented as doublebyte encoding.
+  """
+  def all_doublebyte do
+    Enum.filter @emoji_chars, &EmojiChar.doublebyte?/1
+  end
+
+  @doc """
+  Returns a list of all EmojiChars that have at least one variant encoding.
+  """
+  def all_with_variants do
+    Enum.filter @emoji_chars, &EmojiChar.variant?/1
+  end
+
 
   # for char <- @emoji_chars do
   #   def find_by_n(unquote(char.name)), do: char

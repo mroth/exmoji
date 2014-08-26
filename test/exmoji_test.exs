@@ -27,4 +27,12 @@ defmodule ExmojiTest do
             == @known_variants
   end
 
+  test ".all_doublebyte - convenience method for all doublebyte chars" do
+    assert Exmoji.all_doublebyte |> Enum.count == @known_doublebyte
+  end
+
+  test ".all_with_variants - convenience method for all variant chars" do
+    assert Exmoji.all_with_variants |> Enum.count == @known_variants
+  end
+
 end
