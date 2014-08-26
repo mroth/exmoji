@@ -11,17 +11,17 @@ defmodule ExmojiTest do
   @known_doublebyte 21
   @known_variants   107
 
-  test "all #{@known_chars} emoji characters should be present" do
+  test ".all - all #{@known_chars} emoji characters should be present" do
     assert Exmoji.all |> Enum.count == @known_chars
   end
 
-  test "number of doublebyte charcters should match expected" do
+  test ".all - number of doublebyte charcters should match expected" do
     assert Exmoji.all
             |> Enum.count(&EmojiChar.doublebyte?(&1))
             == @known_doublebyte
   end
 
-  test "number of characters with variant encoding should match expected" do
+  test ".all - number of characters with variant encoding should match expected" do
     assert Exmoji.all
             |> Enum.count(&EmojiChar.variant?(&1))
             == @known_variants
