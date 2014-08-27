@@ -14,12 +14,12 @@ defmodule EmojiCharTest do
   #
   # #render
   #
-  test "should render a char as happy shiny unicode", %{invader: invader} do
-    assert EmojiChar.render(invader) == "👾"
+  test ".render - should render a char as happy shiny unicode", examples do
+    assert EmojiChar.render(examples[:invader]) == "👾"
   end
 
-  test "should render as happy shiny unicode for doublebyte chars", %{usflag: usflag} do
-    assert EmojiChar.render(usflag) == "🇺🇸"
+  test ".render - should render as happy shiny unicode for doublebyte chars", examples do
+    assert EmojiChar.render(examples[:usflag]) == "🇺🇸"
   end
 
   #
