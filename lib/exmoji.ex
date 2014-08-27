@@ -77,5 +77,15 @@ defmodule Exmoji do
     end
   end
 
+  @doc """
+  Convert a unified ID directly to its bitstring glyph representation.
+  """
+  def unified_to_char(uid) do
+    uid
+    |> String.split("-")
+    |> Enum.map( &(String.to_integer(&1, 16)) )
+    |> List.to_string
+  end
+
 
 end

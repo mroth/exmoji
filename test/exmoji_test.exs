@@ -67,4 +67,25 @@ defmodule ExmojiTest do
     assert Exmoji.find_by_unified("2764-fe0f").name == "HEAVY BLACK HEART"
   end
 
+  #
+  # #unified_to_char
+  #
+  test ".unified_to_char - converts normal unified codepoints to unicode strings" do
+    assert Exmoji.unified_to_char("1F47E") == "👾"
+    assert Exmoji.unified_to_char("1F680") == "🚀"
+  end
+
+  test ".unified_to_char - converts doublebyte unified codepoints to unicode strings" do
+    assert Exmoji.unified_to_char("1F1FA-1F1F8") == "🇺🇸"
+    assert Exmoji.unified_to_char("0023-20E3") == "#⃣"
+  end
+
+  test ".unified_to_char - converts variant unified codepoints to unicode strings" do
+    assert Exmoji.unified_to_char("2764-fe0f") == "\x{2764}\x{FE0F}"
+  end
+
+  test ".unified_to_char - converts variant+doublebyte chars (triplets!) to unicode strings" do
+    assert Exmoji.unified_to_char("0030-FE0F-20E3") == "\x{0030}\x{FE0F}\x{20E3}"
+  end
+
 end
