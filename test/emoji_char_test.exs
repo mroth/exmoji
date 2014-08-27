@@ -22,6 +22,22 @@ defmodule EmojiCharTest do
     assert EmojiChar.render(examples[:usflag]) == "🇺🇸"
   end
 
+  test ".render - should have flag to output forced emoji variant char encoding if requested", examples do
+    assert EmojiChar.render(examples[:cloud], variant_encoding: false) == "\x{2601}"
+    assert EmojiChar.render(examples[:cloud], variant_encoding:  true) == "\x{2601}\x{FE0F}"
+  end
+
+  test ".render - should fall back to normal encoding if no variant exists, even when requested", examples do
+    assert EmojiChar.render(examples[:invader], variant_encoding: false) == "\x{1F47E}"
+    assert EmojiChar.render(examples[:invader], variant_encoding:  true) == "\x{1F47E}"
+  end
+
+  test ".render - should default to variant encoding for chars with a variant present", examples do
+    assert EmojiChar.render(examples[:cloud])     == "\x{2601}\x{FE0F}"
+    assert EmojiChar.render(examples[:hourglass]) == "\x{231B}\x{FE0F}"
+  end
+
+
   #
   # #doublebyte?
   #

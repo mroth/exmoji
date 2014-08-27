@@ -10,11 +10,19 @@ defmodule Exmoji.EmojiChar do
 
   alias Exmoji.EmojiChar
 
-  def render(%EmojiChar{unified: unified}) do
-    unified
-    |> String.split("-")
-    |> Enum.map(&String.to_integer(&1, 16))
-    |> to_string
+  @doc """
+  Renders an EmojiChar to its bitstring glyph representation, suitable for
+  printing to screen.
+  """
+  def render(ec, options \\ [variant_encoding: true])
+  def render(ec, variant_encoding: false) do
+    Exmoji.unified_to_char(ec.unified)
+  end
+  def render(ec, variant_encoding: true) do
+    case EmojiChar.variant?(ec) do
+      true  -> Exmoji.unified_to_char( EmojiChar.variant(ec) )
+      false -> Exmoji.unified_to_char( ec.unified )
+    end
   end
 
   @doc """
