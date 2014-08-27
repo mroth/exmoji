@@ -49,4 +49,19 @@ defmodule Exmoji do
     @emoji_chars |> Enum.filter fn x -> String.contains? x.name, String.upcase(name) end
   end
 
+  @doc """
+  Finds an EmojiChar based on the unified codepoint ID.
+  """
+  def find_by_unified(uid) do
+    uid |> String.upcase |> _find_by_unified
+  end
+
+  for ec <- @emoji_chars do
+    defp _find_by_unified( unquote(ec.unified) ), do: unquote(Macro.escape(ec))
+    for variant <- ec.variations do
+      defp _find_by_unified( unquote(variant) ), do: unquote(Macro.escape(ec))
+    end
+  end
+
+
 end

@@ -35,4 +35,17 @@ defmodule ExmojiTest do
     assert Exmoji.all_with_variants |> Enum.count == @known_variants
   end
 
+  test ".find_by_unified - should find the proper EmojiChar object" do
+    results = Exmoji.find_by_unified("1F680")
+    assert results.name == "ROCKET"
+  end
+
+  test ".find_by_unified - should normalise capitalization for hex values" do
+    assert Exmoji.find_by_unified("1f680") == Exmoji.find_by_unified("1F680")
+  end
+
+  test ".find_by_unified - should find via variant encoding ID format as well" do
+    assert Exmoji.find_by_unified("2764-fe0f").name == "HEAVY BLACK HEART"
+  end
+
 end
