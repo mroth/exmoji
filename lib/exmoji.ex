@@ -42,6 +42,20 @@ defmodule Exmoji do
   end
 
 
+  @doc """
+  Returns a list of all known emoji chars rendered as Unicode bitstrings.
+  """
+  def chars, do: chars(include_variants: false)
+  def chars(include_variants: false) do
+    Enum.map @emoji_chars, &EmojiChar.render/1
+  end
+  def chars(include_variants: true) do
+    # normals = chars(include_variants: false)
+    # extras  = all_with_variants
+    :pending
+  end
+
+
   # for char <- @emoji_chars do
   #   def find_by_n(unquote(char.name)), do: char
   # end
