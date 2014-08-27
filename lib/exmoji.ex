@@ -50,9 +50,9 @@ defmodule Exmoji do
     Enum.map @emoji_chars, &EmojiChar.render/1
   end
   def chars(include_variants: true) do
-    # normals = chars(include_variants: false)
-    # extras  = all_with_variants
-    :pending
+    normals = chars(include_variants: false)
+    extras  = Enum.map all_with_variants, &(EmojiChar.variant(&1))
+    normals ++ extras
   end
 
 

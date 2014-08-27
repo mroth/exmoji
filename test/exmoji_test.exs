@@ -44,15 +44,15 @@ defmodule ExmojiTest do
     assert Enum.count(Exmoji.chars) == @known_chars
   end
 
-  # test ".chars - should include variants in list when options {include_variants: true}" do
-  #   assert Exmoji.chars(include_variants: true) |> Enum.count == @known_chars + @known_variants
-  # end
+  test ".chars - should include variants in list when options {include_variants: true}" do
+    assert Exmoji.chars(include_variants: true) |> Enum.count == @known_chars + @known_variants
+  end
 
-  # test ".chars - should not have any duplicates in list when variants are included" do
-    # CS VERSION BELOW
-    # results = EmojiData.chars({include_variants: true})
-    # results.length.should.equal _.uniq(results).length
-  #end
+  test ".chars - should not have any duplicates in list when variants are included" do
+    results = Exmoji.chars(include_variants: true)
+    assert Enum.count(results) == Enum.count(Enum.uniq(results))
+  end
+
 
   test ".find_by_unified - should find the proper EmojiChar object" do
     results = Exmoji.find_by_unified("1F680")
