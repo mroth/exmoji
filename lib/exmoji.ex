@@ -87,5 +87,29 @@ defmodule Exmoji do
     |> List.to_string
   end
 
+  @doc """
+  Convert a native bitstring glyph to a unified ID.
+
+  This is a conversion operation, not a match, so it may produce unexpected
+  results with different types of values.
+
+  ## Example
+
+    iex> Exmoji.char_to_unified("👾")
+    "1F47E"
+
+  """
+  def char_to_unified(char) do
+    char
+    |> String.codepoints
+    |> Enum.map(&padded_hex_string/1)
+    |> Enum.join("-")
+    |> String.upcase
+  end
+  defp padded_hex_string(codepoint) do
+    << cp_int_value :: utf8 >> = codepoint
+    cp_int_value |> Integer.to_string(16) |> String.rjust(4,?0)
+  end
+
 
 end
