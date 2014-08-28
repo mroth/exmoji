@@ -8,7 +8,7 @@ defmodule Exmoji.Scanner do
     # rscan(str)
     bscan(str)
     |> Enum.map(&Exmoji.char_to_unified/1)
-    |> Enum.map(&Exmoji.find_by_unified/1)
+    |> Enum.map(&Exmoji.from_unified/1)
   end
 
   # regex scan, returns a list of emoji as char glyphs

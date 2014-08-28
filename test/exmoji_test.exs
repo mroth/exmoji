@@ -56,19 +56,19 @@ defmodule ExmojiTest do
 
 
   #
-  # #find_by_unified - TODO: rename to .from_unified
+  # #from_unified
   #
-  test ".find_by_unified - should find the proper EmojiChar object" do
-    results = Exmoji.find_by_unified("1F680")
+  test ".from_unified - should find the proper EmojiChar object" do
+    results = Exmoji.from_unified("1F680")
     assert results.name == "ROCKET"
   end
 
-  test ".find_by_unified - should normalise capitalization for hex values" do
-    assert Exmoji.find_by_unified("1f680") == Exmoji.find_by_unified("1F680")
+  test ".from_unified - should normalise capitalization for hex values" do
+    assert Exmoji.from_unified("1f680") == Exmoji.from_unified("1F680")
   end
 
-  test ".find_by_unified - should find via variant encoding ID format as well" do
-    assert Exmoji.find_by_unified("2764-fe0f").name == "HEAVY BLACK HEART"
+  test ".from_unified - should find via variant encoding ID format as well" do
+    assert Exmoji.from_unified("2764-fe0f").name == "HEAVY BLACK HEART"
   end
 
   #
