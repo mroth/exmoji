@@ -12,6 +12,11 @@ defmodule EmojiCharTest do
   end
 
   #
+  # #to_s
+  #
+
+
+  #
   # #render
   #
   test ".render - should render a char as happy shiny unicode", examples do
@@ -37,6 +42,9 @@ defmodule EmojiCharTest do
     assert EmojiChar.render(examples[:hourglass]) == "\x{231B}\x{FE0F}"
   end
 
+  #
+  # # chars - all possible glyphs
+  #
 
   #
   # #doublebyte?

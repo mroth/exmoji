@@ -11,20 +11,11 @@ defmodule ExmojiTest do
   @known_doublebyte 21
   @known_variants   107
 
+  #
+  # #all
+  #
   test ".all - all #{@known_chars} emoji characters should be present" do
     assert Exmoji.all |> Enum.count == @known_chars
-  end
-
-  test ".all - number of doublebyte charcters should match expected" do
-    assert Exmoji.all
-            |> Enum.count(&EmojiChar.doublebyte?(&1))
-            == @known_doublebyte
-  end
-
-  test ".all - number of characters with variant encoding should match expected" do
-    assert Exmoji.all
-            |> Enum.count(&EmojiChar.variant?(&1))
-            == @known_variants
   end
 
   test ".all_doublebyte - convenience method for all doublebyte chars" do
@@ -35,6 +26,10 @@ defmodule ExmojiTest do
     assert Exmoji.all_with_variants |> Enum.count == @known_variants
   end
 
+
+  #
+  # #chars
+  #
   test ".chars - should return an array of all chars in unicode string format" do
     assert is_list(Exmoji.chars)
     assert Enum.all?(Exmoji.chars, fn c -> is_bitstring(c) end)
@@ -53,7 +48,16 @@ defmodule ExmojiTest do
     assert Enum.count(results) == Enum.count(Enum.uniq(results))
   end
 
+  #
+  # #codepoints
+  #
+  # - should return an array of all known codepoints in dashed string representation
+  # - should include variants in list when options {include_variants: true}
 
+
+  #
+  # #find_by_unified - TODO: rename to .from_unified
+  #
   test ".find_by_unified - should find the proper EmojiChar object" do
     results = Exmoji.find_by_unified("1F680")
     assert results.name == "ROCKET"
@@ -67,6 +71,25 @@ defmodule ExmojiTest do
     assert Exmoji.find_by_unified("2764-fe0f").name == "HEAVY BLACK HEART"
   end
 
+  #
+  # #find_by_name
+  #
+  # - returns an array of results, upcasing input if needed
+  # - returns [] if nothing is found
+
+
+  #
+  # #find_by_short_name
+  #
+  # - returns an array of results, downcasing input if needed
+  # - returns [] if nothing is found
+
+
+  #
+  # #from_short_name
+  #
+  # - returns exact matches on a short name
+  # - returns undefined if nothing matches
 
   #
   # #char_to_unified
