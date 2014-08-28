@@ -52,7 +52,7 @@ defmodule Exmoji do
   def chars(include_variants: true) do
     normals = chars(include_variants: false)
     extras  = Enum.map all_with_variants, &(EmojiChar.variant(&1))
-    normals ++ extras
+    extras ++ normals
   end
 
 
