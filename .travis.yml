@@ -13,8 +13,9 @@ before_install:
 before_script:
   - export PATH=`pwd`/elixir/bin:$PATH
   - mix local.hex --force
-  - MIX_ENV=test mix deps.get --only
+  - MIX_ENV=test mix deps.get --only test
   - MIX_ENV=test mix deps.compile
+  - MIX_ENV=test mix compile
 
 script:
   - mix test --trace
