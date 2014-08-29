@@ -63,10 +63,6 @@ defmodule Exmoji do
   end
 
 
-  # for char <- @emoji_chars do
-  #   def find_by_n(unquote(char.name)), do: char
-  # end
-
   @doc """
   Finds any EmojiChar that contains given string in its name.
 
@@ -88,6 +84,8 @@ defmodule Exmoji do
 
 
   @doc """
+  Find all EmojiChar that match substring in any of their associated short
+  name keywords.
   """
   def find_by_short_name(sname) do
     @emoji_chars |> Enum.filter( &(_matches_short_name(&1, sname)) )
@@ -111,6 +109,7 @@ defmodule Exmoji do
     end
   end
 
+
   @doc """
   Convert a unified ID directly to its bitstring glyph representation.
   """
@@ -120,6 +119,7 @@ defmodule Exmoji do
     |> Enum.map( &(String.to_integer(&1, 16)) )
     |> List.to_string
   end
+
 
   @doc """
   Convert a native bitstring glyph to a unified ID.
