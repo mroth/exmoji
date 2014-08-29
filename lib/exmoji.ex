@@ -43,7 +43,7 @@ defmodule Exmoji do
 
 
   @doc """
-  Returns a list of all known emoji chars rendered as Unicode bitstrings.
+  Returns a list of all known emoji characters rendered as Unicode bitstrings.
 
   By default, the default rendering options for this library will be used.
   However, if you pass the option of `include_variants: true` then all possible
@@ -146,7 +146,7 @@ defmodule Exmoji do
 
 
   @doc """
-  Convert a native bitstring glyph to a unified ID.
+  Convert a native bitstring glyph to its unified codepoint ID.
 
   This is a conversion operation, not a match, so it may produce unexpected
   results with different types of values.

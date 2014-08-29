@@ -1,18 +1,45 @@
 defmodule Exmoji.EmojiChar do
-  defstruct(
+  @moduledoc """
+  EmojiChar is a struct represents a single Emoji character and its associated
+  metadata.
+
+  ## Fields
+
+  * `name` - The standardized name used in the Unicode specification to
+    represent this emoji character.
+  * `unified` - The primary unified codepoint ID for the emoji.
+  * `variations` - All list of variant codepoints that may also represent this
+    emoji.
+  * `short_name` - The canonical "short name" or keyword used in many systems to
+    refer to this emoji. Often surrounded by :colons: in systems like GitHub & Campfire.
+  * `short_names` - A full list of possible keywords for the emoji.
+  * `text` - An alternate textual representation of the emoji, for example a
+    smiley face emoji may be represented with an ASCII alternative. Most emoji
+    do not have a text alternative. This is typically used when building an
+    automatic translation from typed emoticons.
+
+  It also contains a few helper functions to deal with this data type.
+  """
+
+  defstruct [
     name: nil,
     unified: nil,
     variations: [],
     short_name: nil,
     short_names: [],
     text: nil
-  )
+  ]
 
   alias Exmoji.EmojiChar
 
   @doc """
   Renders an EmojiChar to its bitstring glyph representation, suitable for
   printing to screen.
+
+  By passing options field `variant_encoding` you can manually specify whether
+  the variant encoding selector should be used to hint to rendering devices
+  that "graphic" representation should be used.  By default, we use this for all
+  Emoji characters that contain a possible variant.
   """
   def render(ec, options \\ [variant_encoding: true])
   def render(ec, variant_encoding: false) do

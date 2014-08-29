@@ -27,27 +27,58 @@ Modules
 ### Exmoji
 The main library, with detailed search and conversion functions.
 
+Examples:
+```iex
+iex> Exmoji.from_unified("1F680")
+%Exmoji.EmojiChar{name: "ROCKET", short_name: "rocket", short_names: ["rocket"],
+ text: nil, unified: "1F680", variations: []}
+
+iex> Exmoji.find_by_short_name("MOON") |> Enum.count
+13
+
+iex> for t <- Exmoji.find_by_name("tree"), do: t.name
+["EVERGREEN TREE", "DECIDUOUS TREE", "PALM TREE", "CHRISTMAS TREE",
+"TANABATA TREE"]
+
+iex> Exmoji.all_doublebyte |> Enum.count
+21
+```
+
 ### Exmoji.EmojiChar
-A struct representation of a single Emoji character glyph and all of it's
+A struct representation of a single Emoji character and all of its
 associated metadata.
 
 This module also contains some convenience methods for acting upon these
-structs.
+structs. For example, `EmojiChar.render/1` will produce a bitstring
+representation of an Emoji character suitable for transmission.  It understands
+which Emoji have variant encodings and will do the right thing to make sure they
+are likely to display correctly on the other end.
 
 ### Exmoji.Scanner
 Provides very fast searches against binary strings for the presence of UTF-8
 encoded Emoji glyphs.  Whereas the Ruby and NodeJS versions of this library
-accomplish this via regex, the Elixir version relies on binary pattern matching,
-making it very fast (anecdotally roughly 2x as fast as NodeJS, 5x Ruby).
+accomplish this via regular expressions, the Elixir version relies on binary
+pattern matching, making it faster.
+
+Examples:
+
+```iex
+iex> Exmoji.Scanner.scan("flying on my 🚀 to visit the 👾 people.")
+[%Exmoji.EmojiChar{name: "ROCKET", short_name: "rocket",
+  short_names: ["rocket"], text: nil, unified: "1F680", variations: []},
+ %Exmoji.EmojiChar{name: "ALIEN MONSTER", short_name: "space_invader",
+  short_names: ["space_invader"], text: nil, unified: "1F47E", variations: []}]
+```
 
 
 Terminology Note
 ----------------
 This library uses the term "char" extensively to refer to a single emoji glyph
-in string encoding.  In Elixir/Erlang char means something specific, which
+in string encoding.  In Elixir/Erlang `char means something specific, which
 may be confusing because of the charlist/bitstring division (this library uses
 bitstrings).  I may rename all those API functions for this version of the lib
-because of that, but for now I'm keeping it consistent with other versions...
+because of that, but for now I'm keeping it consistent with the official Unicode
+names for things...
 
 [doublebyte]: http://www.quora.com/Why-does-using-emoji-reduce-my-SMS-character-limit-to-70
-[variant]: http://en.wikipedia.org/wiki/Variant_form_(Unicode)
+[variant]: http://www.unicode.org/L2/L2011/11438-emoji-var.pdf
