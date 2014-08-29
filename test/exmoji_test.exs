@@ -71,6 +71,10 @@ defmodule ExmojiTest do
     assert Exmoji.from_unified("2764-fe0f").name == "HEAVY BLACK HEART"
   end
 
+  test ".from_unified - should return nil if there is no match" do
+    assert Exmoji.from_unified("tacotacotaco") == nil
+  end
+
   #
   # #find_by_name
   #

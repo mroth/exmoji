@@ -113,6 +113,8 @@ defmodule Exmoji do
     end
   end
 
+  defp _from_short_name(_), do: nil
+
 
   @doc """
   Finds an EmojiChar based on the unified codepoint ID.
@@ -123,10 +125,13 @@ defmodule Exmoji do
 
   for ec <- @emoji_chars do
     defp _from_unified( unquote(ec.unified) ), do: unquote(Macro.escape(ec))
+
     for variant <- ec.variations do
       defp _from_unified( unquote(variant) ), do: unquote(Macro.escape(ec))
     end
   end
+
+  defp _from_unified(_), do: nil
 
 
   @doc """
