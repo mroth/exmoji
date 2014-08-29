@@ -5,7 +5,8 @@ defmodule Exmoji.Mixfile do
     [app: :exmoji,
      version: "0.0.1",
      elixir: "~> 0.15.1",
-     deps: deps]
+     deps: deps,
+     test_coverage: [tool: ExCoveralls]]
   end
 
   # Configuration for the OTP application
@@ -27,7 +28,7 @@ defmodule Exmoji.Mixfile do
   defp deps do
     [
       {:jazz, "~> 0.2.0"},
-      {:exprof, "~> 0.1.2", only: :dev}
+      {:excoveralls, "~> 0.3", only: :dev}
     ]
   end
 end
