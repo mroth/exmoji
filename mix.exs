@@ -27,7 +27,8 @@ defmodule Exmoji.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:jazz, "~> 0.2.0"},
+      {:jsex, "~> 2.0.0"},
+      {:exprof, "~> 0.1.2", only: :dev},
       {:excoveralls, "~> 0.3", only: :dev}
     ]
   end
