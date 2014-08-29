@@ -2,11 +2,34 @@ defmodule Exmoji.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :exmoji,
-     version: "0.0.1",
-     elixir: "~> 0.15.1",
-     deps: deps,
-     test_coverage: [tool: ExCoveralls]]
+    [
+      app:           :exmoji,
+      version:       "0.0.1",
+      elixir:        "~> 0.15.1",
+      deps:          deps,
+      test_coverage: [tool: ExCoveralls],
+      name:          "Exmoji",
+      source_url:    "https://github.com/mroth/exmoji",
+      description:   description,
+      package:       package
+    ]
+  end
+
+  defp description do
+    """
+    An Elixir/Erlang library providing low level operations for dealing with
+    Emoji glyphs in the Unicode standard.
+    """
+  end
+
+  defp package do
+    [
+      contributors: [ "Matthew Rothenberg <mroth@mroth.info>" ],
+      links:        %{
+                      #  "Docs"   => "https://mroth.github.io/exmoji/",
+                       "GitHub" => "https://github.com/mroth/exmoji"
+                    }
+    ]
   end
 
   # Configuration for the OTP application
