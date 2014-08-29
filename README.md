@@ -10,7 +10,15 @@ with Emoji as a fundamental part of your application, and you start to realize
 the nightmare of [doublebyte encoding][doublebyte] or [variants][variant], then
 this library will be your new best friend.
 
-** WORK IN PROGRESS - NOT READY TO USE YET **
+**WORK IN PROGRESS - NOT READY TO USE YET**
+
+[![Build Status](https://travis-ci.org/mroth/exmoji.svg?branch=master)](https://travis-ci.org/mroth/exmoji)
+
+
+Installation
+------------
+
+Coming soon.
 
 
 Modules
