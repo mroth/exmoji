@@ -52,8 +52,9 @@ defmodule Exmoji.Mixfile do
   defp deps do
     [
       {:jazz, "~> 0.2.0"},
-      {:exprof, "~> 0.1.2", only: :dev},
-      {:excoveralls, "~> 0.3", only: :dev}
+      {:exprof, "~> 0.1.2", only: :dev}, #TODO: maybe remove me if not needed soon
+      {:excoveralls, "~> 0.3", only: :dev},
+      {:benchfella, github: "alco/benchfella", only: :dev}
     ]
   end
 end
