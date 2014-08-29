@@ -51,8 +51,21 @@ defmodule ExmojiTest do
   #
   # #codepoints
   #
-  # - should return an array of all known codepoints in dashed string representation
-  # - should include variants in list when options {include_variants: true}
+  test ".codepoints - returns list of all codepoints in dashed string representation" do
+    results = Exmoji.codepoints()
+    assert Enum.count(results) == @known_chars
+    for r <- results do
+      assert String.match? r, ~r/^[0-9A-F\-]{4,11}$/
+    end
+  end
+
+  test ".codepoints - include variants in list when options {include_variants: true}" do
+    results = Exmoji.codepoints(include_variants: true)
+    assert Enum.count(results) == @known_chars + @known_variants
+    for r <- results do
+      assert String.match? r, ~r/^[0-9A-F\-]{4,16}$/
+    end
+  end
 
 
   #

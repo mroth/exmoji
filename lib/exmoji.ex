@@ -65,6 +65,22 @@ defmodule Exmoji do
 
 
   @doc """
+  Returns a list of all known codepoints representing Emoji characters.
+
+  This function also accepts the `include_variants` option, for details on its
+  significance, see similar discussion for the `EmojiChar.chars/1` function.
+  """
+  def codepoints, do: codepoints(include_variants: false)
+  def codepoints(include_variants: false) do
+    Enum.map(@emoji_chars, &(&1.unified))
+  end
+  def codepoints(include_variants: true) do
+    Enum.map(@emoji_chars, &([&1.unified] ++ &1.variations))
+    |> List.flatten
+  end
+
+
+  @doc """
   Finds any EmojiChar that contains given string in its name.
 
   ## Examples
