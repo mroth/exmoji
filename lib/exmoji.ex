@@ -44,15 +44,22 @@ defmodule Exmoji do
 
   @doc """
   Returns a list of all known emoji chars rendered as Unicode bitstrings.
+
+  By default, the default rendering options for this library will be used.
+  However, if you pass the option of `include_variants: true` then all possible
+  renderings of a single glyph will be included, meaning that:
+
+    1. you will have "duplicate" emojis in your list
+    2. this list is now suitable for exhaustably matching against
+
   """
   def chars, do: chars(include_variants: false)
   def chars(include_variants: false) do
-    Enum.map @emoji_chars, &EmojiChar.render/1
+    Enum.map(@emoji_chars, &EmojiChar.render/1)
   end
   def chars(include_variants: true) do
-    normals = chars(include_variants: false)
-    extras  = Enum.map all_with_variants, &(EmojiChar.variant(&1))
-    extras ++ normals
+    Enum.map(@emoji_chars, &EmojiChar.chars/1)
+    |> List.flatten
   end
 
 
