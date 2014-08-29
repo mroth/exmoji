@@ -7,7 +7,7 @@ defmodule ScannerTest do
   @case_multi         "\x{0023}\x{FE0F}\x{20E3}"
   @case_variant       "flying on my 🚀 to visit the 👾 people."
   @case_multivariant  "first a \x{0023}\x{FE0F}\x{20E3} then a 🚀"
-  @case_duplicates    "flying my 🚀 to visit the 👾 people who have their own 🚀 too."
+  @case_duplicates    "flying my 🚀 to visit the 👾 people who have their own 🚀 omg!"
   @case_none          "i like turtles"
 
   #
@@ -56,7 +56,10 @@ defmodule ScannerTest do
     assert Scanner.scan(@case_none) == []
   end
 
-  test ".scan - make sure binary scan gets same results as legacy regex scan" do
+  #
+  # #bscan
+  #
+  test ".bscan - make sure binary scan gets same result as legacy regex scan" do
     testcases = [@case_exact, @case_multi, @case_variant, @case_multivariant,
                  @case_duplicates, @case_none]
     for tc <- testcases, do: assert Scanner.bscan(tc) == Scanner.rscan(tc)
