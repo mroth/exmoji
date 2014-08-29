@@ -86,6 +86,17 @@ defmodule Exmoji do
     |> Enum.filter( fn x -> String.contains?(x.name, String.upcase(name)) end )
   end
 
+
+  @doc """
+  """
+  def find_by_short_name(sname) do
+    @emoji_chars |> Enum.filter( &(_matches_short_name(&1, sname)) )
+  end
+  defp _matches_short_name(%EmojiChar{short_names: short_names}, target) do
+    target = String.downcase(target)
+    Enum.any? short_names, fn(sn) -> String.contains?(sn, target) end
+  end
+
   @doc """
   Finds an EmojiChar based on the unified codepoint ID.
   """

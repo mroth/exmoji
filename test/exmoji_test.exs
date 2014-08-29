@@ -87,8 +87,15 @@ defmodule ExmojiTest do
   #
   # #find_by_short_name
   #
-  # - returns an array of results, downcasing input if needed
-  # - returns [] if nothing is found
+  test ".find_by_short_name - returns a list of results, downcasing input if needed" do
+    results = Exmoji.find_by_short_name("MOON")
+    assert is_list(results)
+    assert results |> Enum.count == 13
+  end
+
+  test ".find_by_short_name - returns empty list of no matches are found" do
+    assert Exmoji.find_by_short_name("sdlkfjlskdfj") == []
+  end
 
 
   #
