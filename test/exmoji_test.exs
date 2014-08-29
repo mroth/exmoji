@@ -74,9 +74,15 @@ defmodule ExmojiTest do
   #
   # #find_by_name
   #
-  # - returns an array of results, upcasing input if needed
-  # - returns [] if nothing is found
+  test ".find_by_name - returns an array of results, upcasing input if needed" do
+    results = Exmoji.find_by_name("tree")
+    assert is_list(results)
+    assert results |> Enum.count == 5
+  end
 
+  test ".find_by_name - returns empty list of no matches are found" do
+    assert Exmoji.find_by_name("sdlkfjlskdfj") == []
+  end
 
   #
   # #find_by_short_name

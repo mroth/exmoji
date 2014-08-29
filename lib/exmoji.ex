@@ -66,8 +66,24 @@ defmodule Exmoji do
   # for char <- @emoji_chars do
   #   def find_by_n(unquote(char.name)), do: char
   # end
+
+  @doc """
+  Finds any EmojiChar that contains given string in its name.
+
+  ## Examples
+
+    iex> Exmoji.find_by_name "father"
+    [%Exmoji.EmojiChar{name: "FATHER CHRISTMAS", short_name: "santa",
+    short_names: ["santa"], text: nil, unified: "1F385", variations: []}]
+
+    iex> for t <- Exmoji.find_by_name("tree"), do: t.name
+    ["EVERGREEN TREE", "DECIDUOUS TREE", "PALM TREE", "CHRISTMAS TREE",
+    "TANABATA TREE"]
+
+  """
   def find_by_name(name) do
-    @emoji_chars |> Enum.filter fn x -> String.contains? x.name, String.upcase(name) end
+    @emoji_chars
+    |> Enum.filter( fn x -> String.contains?(x.name, String.upcase(name)) end )
   end
 
   @doc """
