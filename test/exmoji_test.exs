@@ -101,8 +101,18 @@ defmodule ExmojiTest do
   #
   # #from_short_name
   #
-  # - returns exact matches on a short name
-  # - returns undefined if nothing matches
+  test ".from_short_name - returns exact matches on a short name" do
+    results = Exmoji.from_short_name("scream")
+    assert %Exmoji.EmojiChar{name: "FACE SCREAMING IN FEAR"} = results
+  end
+
+  test ".from_short_name - handles lowercasing input if required" do
+    assert Exmoji.from_short_name("SCREAM") == Exmoji.from_short_name("scream")
+  end
+
+  test ".from_short_name - returns nil if nothing matches" do
+    assert Exmoji.from_short_name("taco") == nil
+  end
 
   #
   # #char_to_unified

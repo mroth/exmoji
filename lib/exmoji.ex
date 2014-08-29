@@ -95,6 +95,25 @@ defmodule Exmoji do
     Enum.any? short_names, fn(sn) -> String.contains?(sn, target) end
   end
 
+
+  @doc """
+  Finds an EmojiChar based on its short name keyword.
+
+  Case insensitive. Otherwise must match exactly. Do not include the :colon:
+  identifiers if you are parsing text that uses them to indicate the presence of
+  a keyword.
+  """
+  def from_short_name(sname) do
+    sname |> String.downcase |> _from_short_name
+  end
+
+  for ec <- @emoji_chars do
+    for sn <- ec.short_names do
+      defp _from_short_name( unquote(sn) ), do: unquote(Macro.escape(ec))
+    end
+  end
+
+
   @doc """
   Finds an EmojiChar based on the unified codepoint ID.
   """
