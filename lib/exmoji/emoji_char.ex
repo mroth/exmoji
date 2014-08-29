@@ -26,6 +26,18 @@ defmodule Exmoji.EmojiChar do
   end
 
   @doc """
+  Returns a list of all possible bitstring renderings of the glyph.
+
+  E.g., normal, with variant selectors, etc. This is useful if you want to have
+  all possible values to match against when searching for the glyph in a string
+  representation.
+  """
+  def chars(%EmojiChar{unified: uid, variations: variations}) do
+    [uid] ++ variations
+    |> Enum.map(&Exmoji.unified_to_char/1)
+  end
+
+  @doc """
   Is the EmojiChar represented by a doublebyte codepoint in Unicode?
   """
   def doublebyte?(%EmojiChar{unified: id}) do

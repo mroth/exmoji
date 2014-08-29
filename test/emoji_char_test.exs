@@ -43,8 +43,12 @@ defmodule EmojiCharTest do
   end
 
   #
-  # # chars - all possible glyphs
+  # # chars - all possible renderings for a glyph
   #
+  test ".chars - should return an array of all possible string render variations", examples do
+    assert EmojiChar.chars(examples[:invader]) == ["👾"]
+    assert EmojiChar.chars(examples[:cloud]) == ["\x{2601}","\x{2601}\x{FE0F}"]
+  end
 
   #
   # #doublebyte?
