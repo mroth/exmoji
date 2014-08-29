@@ -14,6 +14,6 @@ before_script:
   - export PATH=`pwd`/elixir/bin:$PATH
 
 script:
-  - mix local.hex
+  - mix local.hex --force
   - mix deps.get
   - mix test --trace
