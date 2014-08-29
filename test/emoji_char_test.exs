@@ -12,9 +12,11 @@ defmodule EmojiCharTest do
   end
 
   #
-  # #to_s
+  # #String.Chars - to_string
   #
-
+  test "implements String.Chars", examples do
+    assert "#{examples[:usflag]}" == EmojiChar.render(examples[:usflag])
+  end
 
   #
   # #render

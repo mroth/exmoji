@@ -52,6 +52,10 @@ defmodule Exmoji.EmojiChar do
     end
   end
 
+  defimpl String.Chars do
+    def to_string(ec), do: EmojiChar.render(ec)
+  end
+
   @doc """
   Returns a list of all possible bitstring renderings of the glyph.
 
