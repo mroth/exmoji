@@ -12,8 +12,9 @@ before_install:
 
 before_script:
   - export PATH=`pwd`/elixir/bin:$PATH
-
-script:
   - mix local.hex --force
   - mix deps.get
+  - mix deps.compile
+
+script:
   - mix test --trace
