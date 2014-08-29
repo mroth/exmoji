@@ -22,6 +22,7 @@ defmodule Exmoji do
   end
   @emoji_chars emoji_chars
 
+
   @doc """
   Returns a list of all #{Enum.count @emoji_chars} Emoji characters
   """
@@ -49,8 +50,8 @@ defmodule Exmoji do
   However, if you pass the option of `include_variants: true` then all possible
   renderings of a single glyph will be included, meaning that:
 
-    1. you will have "duplicate" emojis in your list
-    2. this list is now suitable for exhaustably matching against
+    1. You will have "duplicate" emojis in your list.
+    2. This list is now suitable for exhaustably matching against in a search.
 
   """
   def chars, do: chars(include_variants: false)

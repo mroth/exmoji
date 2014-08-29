@@ -2,8 +2,6 @@ defmodule ExmojiTest do
   use ExUnit.Case, async: true
   doctest Exmoji
 
-  alias Exmoji.EmojiChar
-
   # Define a number of known Emoji library characteristics.
   # We should expect to get this many from our data file.
   # This may be manually updated in the future as Emoji evolves.
