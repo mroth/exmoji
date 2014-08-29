@@ -11,6 +11,7 @@ defmodule ExmojiTest do
   @known_doublebyte 21
   @known_variants   107
 
+
   #
   # #all
   #
@@ -48,6 +49,7 @@ defmodule ExmojiTest do
     assert Enum.count(results) == Enum.count(Enum.uniq(results))
   end
 
+
   #
   # #codepoints
   #
@@ -75,6 +77,7 @@ defmodule ExmojiTest do
     assert Exmoji.from_unified("tacotacotaco") == nil
   end
 
+
   #
   # #find_by_name
   #
@@ -87,6 +90,7 @@ defmodule ExmojiTest do
   test ".find_by_name - returns empty list of no matches are found" do
     assert Exmoji.find_by_name("sdlkfjlskdfj") == []
   end
+
 
   #
   # #find_by_short_name
@@ -117,6 +121,7 @@ defmodule ExmojiTest do
   test ".from_short_name - returns nil if nothing matches" do
     assert Exmoji.from_short_name("taco") == nil
   end
+
 
   #
   # #char_to_unified
