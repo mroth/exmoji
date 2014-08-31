@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exmoji</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <div id="content">
+      <div class="breadcrumbs">Exmoji v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Exmoji.html">Exmoji</a></div>
+
+      <h1>
+        Exmoji
+        
+      </h1>
+
+      <ul class="summary_links">
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+          <li><a href="#functions_details">Functions</a></li>
+        
+        
+        
+        
+      </ul>
+
+      
+        <div id="moduledoc" class="docstring">
+          <p>An Elixir/Erlang library providing low level operations for dealing with Emoji
+glyphs in the Unicode standard.</p>
+<p>Exmoji is like a swiss-army knife for dealing with Emoji encoding issues. If
+all you need to do is translate <code class="inline">:poop:</code> into a smiling poop glyph, then there
+are plenty of other libs out there that will probably do what you want.  But
+once you are dealing with Emoji as a fundamental part of your application, and
+you start to realize the nightmare of doublebyte encoding or variants, then
+this library may be your new best friend.</p>
+
+        </div>
+      
+
+      
+        <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L1" class="view_source">Source</a>
+      
+
+      
+        <h2 id="summary">Summary<div class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></div></h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#all/0">all()</a></td>
+  
+    <td class="summary_synopsis"><p>Returns a list of all 845 Emoji characters as <code class="inline">EmojiChar</code></p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#all_doublebyte/0">all_doublebyte()</a></td>
+  
+    <td class="summary_synopsis"><p>Returns a list of all <code class="inline">EmojiChar</code> that are represented as doublebyte encoding</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#all_with_variants/0">all_with_variants()</a></td>
+  
+    <td class="summary_synopsis"><p>Returns a list of all <code class="inline">EmojiChar</code> that have at least one variant encoding</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#char_to_unified/1">char_to_unified(char)</a></td>
+  
+    <td class="summary_synopsis"><p>Convert a native bitstring glyph to its unified codepoint ID</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#chars/0">chars()</a></td>
+  
+    <td class="summary_synopsis"><p>Returns a list of all known emoji characters rendered as Unicode bitstrings</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#chars/1">chars(list1)</a></td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#codepoints/0">codepoints()</a></td>
+  
+    <td class="summary_synopsis"><p>Returns a list of all known codepoints representing Emoji characters</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#codepoints/1">codepoints(list1)</a></td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#find_by_name/1">find_by_name(name)</a></td>
+  
+    <td class="summary_synopsis"><p>Finds any <code class="inline">EmojiChar</code> that contains given string in its name</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#find_by_short_name/1">find_by_short_name(sname)</a></td>
+  
+    <td class="summary_synopsis"><p>Find all <code class="inline">EmojiChar</code> that match substring in any of their associated short
+name keywords</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#from_short_name/1">from_short_name(sname)</a></td>
+  
+    <td class="summary_synopsis"><p>Finds an <code class="inline">EmojiChar</code> based on its short name keyword</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#from_unified/1">from_unified(uid)</a></td>
+  
+    <td class="summary_synopsis"><p>Finds an <code class="inline">EmojiChar</code> based on the unified codepoint ID</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#unified_to_char/1">unified_to_char(uid)</a></td>
+  
+    <td class="summary_synopsis"><p>Convert a unified ID directly to its bitstring glyph representation</p>
+</td>
+  
+</tr>
+
+        </table>
+      
+
+      
+
+      
+        <div id="functions_details" class="details_list">
+          <h2>Functions</h2>
+          <div class="detail">
+  <div class="detail_header" id="all/0">
+    <span class="signature"><strong>all()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#all/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Returns a list of all 845 Emoji characters as <code class="inline">EmojiChar</code>.</p>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L40" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="all_doublebyte/0">
+    <span class="signature"><strong>all_doublebyte()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#all_doublebyte/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Returns a list of all <code class="inline">EmojiChar</code> that are represented as doublebyte encoding.</p>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L45" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="all_with_variants/0">
+    <span class="signature"><strong>all_with_variants()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#all_with_variants/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Returns a list of all <code class="inline">EmojiChar</code> that have at least one variant encoding.</p>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L52" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="char_to_unified/1">
+    <span class="signature"><strong>char_to_unified(char)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#char_to_unified/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Convert a native bitstring glyph to its unified codepoint ID.</p>
+<p>This is a conversion operation, not a match, so it may produce unexpected
+results with different types of values.</p>
+<h2>Example</h2>
+<pre><code>iex&gt; Exmoji.char_to_unified(&quot;👾&quot;)
+&quot;1F47E&quot;</code></pre>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L188" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="chars/0">
+    <span class="signature"><strong>chars()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#chars/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Returns a list of all known emoji characters rendered as Unicode bitstrings.</p>
+<p>By default, the default rendering options for this library will be used.
+However, if you pass the option of <code class="inline">include_variants: true</code> then all possible
+renderings of a single glyph will be included, meaning that:</p>
+<ol>
+<li>You will have “duplicate” emojis in your list.
+</li>
+<li>This list is now suitable for exhaustably matching against in a search.
+</li>
+</ol>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L68" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="chars/1">
+    <span class="signature"><strong>chars(list1)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#chars/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"></div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L69" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="codepoints/0">
+    <span class="signature"><strong>codepoints()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#codepoints/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Returns a list of all known codepoints representing Emoji characters.</p>
+<p>This function also accepts the <code class="inline">include_variants</code> option, for details on its
+significance, see similar discussion for the <code class="inline">EmojiChar.chars/1</code> function.</p>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L84" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="codepoints/1">
+    <span class="signature"><strong>codepoints(list1)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#codepoints/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"></div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L85" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="find_by_name/1">
+    <span class="signature"><strong>find_by_name(name)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#find_by_name/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Finds any <code class="inline">EmojiChar</code> that contains given string in its name.</p>
+<h2>Examples</h2>
+<pre><code>iex&gt; Exmoji.find_by_name &quot;father&quot;
+[%Exmoji.EmojiChar{name: &quot;FATHER CHRISTMAS&quot;, short_name: &quot;santa&quot;,
+short_names: [&quot;santa&quot;], text: nil, unified: &quot;1F385&quot;, variations: []}]
+
+iex&gt; for t &lt;- Exmoji.find_by_name(&quot;tree&quot;), do: t.name
+[&quot;EVERGREEN TREE&quot;, &quot;DECIDUOUS TREE&quot;, &quot;PALM TREE&quot;, &quot;CHRISTMAS TREE&quot;,
+&quot;TANABATA TREE&quot;]</code></pre>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L108" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="find_by_short_name/1">
+    <span class="signature"><strong>find_by_short_name(sname)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#find_by_short_name/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Find all <code class="inline">EmojiChar</code> that match substring in any of their associated short
+name keywords.</p>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L118" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="from_short_name/1">
+    <span class="signature"><strong>from_short_name(sname)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#from_short_name/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Finds an <code class="inline">EmojiChar</code> based on its short name keyword.</p>
+<p>Case insensitive. Otherwise must match exactly. Do not include the <code class="inline">:colon:</code>
+identifiers if you are parsing text that uses them to indicate the presence of
+a keyword.</p>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L134" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="from_unified/1">
+    <span class="signature"><strong>from_unified(uid)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#from_unified/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Finds an <code class="inline">EmojiChar</code> based on the unified codepoint ID.</p>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L150" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="unified_to_char/1">
+    <span class="signature"><strong>unified_to_char(uid)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#unified_to_char/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Convert a unified ID directly to its bitstring glyph representation.</p>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L168" class="view_source">Source</a>
+  
+</div>
+
+        </div>
+      
+
+      
+
+      
+    </div>
+  </body>
+</html>
