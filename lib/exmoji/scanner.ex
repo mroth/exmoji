@@ -5,9 +5,18 @@ defmodule Exmoji.Scanner do
   """
 
   @doc """
-  Scans a string for all EmojiChars contained within.
+  Scans a bitstring for all encoded emoji characters contained within.
 
-  Returns a list of all EmojiChars contained within that string, in order.
+  Returns a list of all `EmojiChar` contained within that string, in order.
+
+  ## Example
+
+      iex> Exmoji.Scanner.scan("flying on my 🚀 to visit the 👾 people.")
+      [%Exmoji.EmojiChar{name: "ROCKET", short_name: "rocket",
+        short_names: ["rocket"], text: nil, unified: "1F680", variations: []},
+       %Exmoji.EmojiChar{name: "ALIEN MONSTER", short_name: "space_invader",
+        short_names: ["space_invader"], text: nil, unified: "1F47E", variations: []}]
+
   """
   def scan(str) do
     bscan(str)

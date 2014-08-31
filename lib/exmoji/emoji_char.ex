@@ -11,7 +11,8 @@ defmodule Exmoji.EmojiChar do
   * `variations` - All list of variant codepoints that may also represent this
     emoji.
   * `short_name` - The canonical "short name" or keyword used in many systems to
-    refer to this emoji. Often surrounded by :colons: in systems like GitHub & Campfire.
+    refer to this emoji. Often surrounded by `:colons:`` in systems like GitHub
+    & Campfire.
   * `short_names` - A full list of possible keywords for the emoji.
   * `text` - An alternate textual representation of the emoji, for example a
     smiley face emoji may be represented with an ASCII alternative. Most emoji
@@ -33,7 +34,7 @@ defmodule Exmoji.EmojiChar do
   alias Exmoji.EmojiChar
 
   @doc """
-  Renders an EmojiChar to its bitstring glyph representation, suitable for
+  Renders an `EmojiChar` to its bitstring glyph representation, suitable for
   printing to screen.
 
   By passing options field `variant_encoding` you can manually specify whether
@@ -57,7 +58,7 @@ defmodule Exmoji.EmojiChar do
   end
 
   @doc """
-  Returns a list of all possible bitstring renderings of the glyph.
+  Returns a list of all possible bitstring renderings of an `EmojiChar`.
 
   E.g., normal, with variant selectors, etc. This is useful if you want to have
   all possible values to match against when searching for the glyph in a string
@@ -69,23 +70,24 @@ defmodule Exmoji.EmojiChar do
   end
 
   @doc """
-  Is the EmojiChar represented by a doublebyte codepoint in Unicode?
+  Is the `EmojiChar` represented by a doublebyte codepoint in Unicode?
   """
   def doublebyte?(%EmojiChar{unified: id}) do
     id |> String.match?(~r/-/)
   end
 
   @doc """
-  Does the EmojiChar have an alternate Unicode variant encoding?
+  Does the `EmojiChar` have an alternate Unicode variant encoding?
   """
   def variant?(%EmojiChar{variations: variations}) do
     length(variations) > 0
   end
 
   @doc """
-  Returns the most likely variant-encoding for an EmojiChar. (For now we only
-  know of one possible variant encoding for certain characters, but there could
-  be others in the future.)
+  Returns the most likely variant-encoding codepoint ID for an `EmojiChar`.
+
+  For now we only know of one possible variant encoding for certain characters,
+  but there could be others in the future.
 
   This is typically used to force Emoji rendering for characters that could be
   represented in standard font glyphs on certain operating systems.

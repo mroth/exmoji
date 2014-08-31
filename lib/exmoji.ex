@@ -1,4 +1,15 @@
 defmodule Exmoji do
+  @moduledoc """
+  An Elixir/Erlang library providing low level operations for dealing with Emoji
+  glyphs in the Unicode standard.
+
+  Exmoji is like a swiss-army knife for dealing with Emoji encoding issues. If
+  all you need to do is translate `:poop:` into a smiling poop glyph, then there
+  are plenty of other libs out there that will probably do what you want.  But
+  once you are dealing with Emoji as a fundamental part of your application, and
+  you start to realize the nightmare of doublebyte encoding or variants, then
+  this library may be your new best friend.
+  """
 
   alias Exmoji.EmojiChar
 
@@ -24,19 +35,19 @@ defmodule Exmoji do
 
 
   @doc """
-  Returns a list of all #{Enum.count @emoji_chars} Emoji characters
+  Returns a list of all #{Enum.count @emoji_chars} Emoji characters as `EmojiChar`.
   """
   def all, do: @emoji_chars
 
   @doc """
-  Returns a list of all EmojiChars that are represented as doublebyte encoding.
+  Returns a list of all `EmojiChar` that are represented as doublebyte encoding.
   """
   def all_doublebyte do
     Enum.filter @emoji_chars, &EmojiChar.doublebyte?/1
   end
 
   @doc """
-  Returns a list of all EmojiChars that have at least one variant encoding.
+  Returns a list of all `EmojiChar` that have at least one variant encoding.
   """
   def all_with_variants do
     Enum.filter @emoji_chars, &EmojiChar.variant?/1
@@ -50,8 +61,8 @@ defmodule Exmoji do
   However, if you pass the option of `include_variants: true` then all possible
   renderings of a single glyph will be included, meaning that:
 
-    1. You will have "duplicate" emojis in your list.
-    2. This list is now suitable for exhaustably matching against in a search.
+  1. You will have "duplicate" emojis in your list.
+  2. This list is now suitable for exhaustably matching against in a search.
 
   """
   def chars, do: chars(include_variants: false)
@@ -81,17 +92,17 @@ defmodule Exmoji do
 
 
   @doc """
-  Finds any EmojiChar that contains given string in its name.
+  Finds any `EmojiChar` that contains given string in its name.
 
   ## Examples
 
-    iex> Exmoji.find_by_name "father"
-    [%Exmoji.EmojiChar{name: "FATHER CHRISTMAS", short_name: "santa",
-    short_names: ["santa"], text: nil, unified: "1F385", variations: []}]
+      iex> Exmoji.find_by_name "father"
+      [%Exmoji.EmojiChar{name: "FATHER CHRISTMAS", short_name: "santa",
+      short_names: ["santa"], text: nil, unified: "1F385", variations: []}]
 
-    iex> for t <- Exmoji.find_by_name("tree"), do: t.name
-    ["EVERGREEN TREE", "DECIDUOUS TREE", "PALM TREE", "CHRISTMAS TREE",
-    "TANABATA TREE"]
+      iex> for t <- Exmoji.find_by_name("tree"), do: t.name
+      ["EVERGREEN TREE", "DECIDUOUS TREE", "PALM TREE", "CHRISTMAS TREE",
+      "TANABATA TREE"]
 
   """
   def find_by_name(name) do
@@ -101,7 +112,7 @@ defmodule Exmoji do
 
 
   @doc """
-  Find all EmojiChar that match substring in any of their associated short
+  Find all `EmojiChar` that match substring in any of their associated short
   name keywords.
   """
   def find_by_short_name(sname) do
@@ -114,9 +125,9 @@ defmodule Exmoji do
 
 
   @doc """
-  Finds an EmojiChar based on its short name keyword.
+  Finds an `EmojiChar` based on its short name keyword.
 
-  Case insensitive. Otherwise must match exactly. Do not include the :colon:
+  Case insensitive. Otherwise must match exactly. Do not include the `:colon:`
   identifiers if you are parsing text that uses them to indicate the presence of
   a keyword.
   """
@@ -134,7 +145,7 @@ defmodule Exmoji do
 
 
   @doc """
-  Finds an EmojiChar based on the unified codepoint ID.
+  Finds an `EmojiChar` based on the unified codepoint ID.
   """
   def from_unified(uid) do
     uid |> String.upcase |> _from_unified
@@ -170,8 +181,8 @@ defmodule Exmoji do
 
   ## Example
 
-    iex> Exmoji.char_to_unified("👾")
-    "1F47E"
+      iex> Exmoji.char_to_unified("👾")
+      "1F47E"
 
   """
   def char_to_unified(char) do

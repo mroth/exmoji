@@ -22,6 +22,8 @@ functionality while being even higher performance. :dizzy:
 
 Note: `excoveralls` is currently lying, actual test coverage is :100:.
 
+[doublebyte]: http://www.quora.com/Why-does-using-emoji-reduce-my-SMS-character-limit-to-70
+[variant]: http://www.unicode.org/L2/L2011/11438-emoji-var.pdf
 [rb]: https://github.com/mroth/emoji_data.rb
 [emojitracker]: http://www.emojitracker.com
 
@@ -108,6 +110,3 @@ may be confusing because of the charlist/bitstring division (this library uses
 bitstrings).  I may rename all those API functions for this version of the lib
 because of that, but for now I'm keeping it consistent with the official Unicode
 names for things...
-
-[doublebyte]: http://www.quora.com/Why-does-using-emoji-reduce-my-SMS-character-limit-to-70
-[variant]: http://www.unicode.org/L2/L2011/11438-emoji-var.pdf
