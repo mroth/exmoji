@@ -11,7 +11,8 @@ defmodule Exmoji.Mixfile do
       name:          "Exmoji",
       source_url:    "https://github.com/mroth/exmoji",
       description:   description,
-      package:       package
+      package:       package,
+      aliases:       aliases
     ]
   end
 
@@ -27,7 +28,7 @@ defmodule Exmoji.Mixfile do
       contributors: [ "Matthew Rothenberg <mroth@mroth.info>" ],
       licenses:     [ "MIT" ],
       links:        %{
-                      #  "Docs"   => "https://mroth.github.io/exmoji/",
+                       "Docs"   => "https://mroth.github.io/exmoji/",
                        "GitHub" => "https://github.com/mroth/exmoji"
                     }
     ]
@@ -40,13 +41,7 @@ defmodule Exmoji.Mixfile do
     [applications: []]
   end
 
-  # Dependencies can be hex.pm packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1"}
+  # Dependencies
   #
   # Type `mix help deps` for more examples and options
   defp deps do
@@ -59,4 +54,29 @@ defmodule Exmoji.Mixfile do
       {:ex_doc, "~> 0.5.0", only: :dev}
     ]
   end
+
+  defp aliases do
+    [
+      clean: ["clean", &clean_docs/1, &clean_benchmarks/1],
+      "docs.release": [&release_docs/1]
+    ]
+  end
+
+  defp clean_benchmarks(_), do: File.rm_rf!("bench/snapshots")
+  defp clean_docs(_), do: File.rm_rf!("docs")
+
+  defp release_docs(_) do
+    additional_files = ["README.md"]
+    :os.cmd 'git clone --branch gh-pages `git config --get remote.origin.url` docs'
+    Mix.Task.run "docs"
+    Enum.each(additional_files, &File.cp!(&1, Path.join("docs", &1)))
+    File.cd! "docs", fn ->
+      :os.cmd 'git add -A .'
+      :os.cmd 'git commit -m "Updated docs"'
+      :os.cmd 'git push origin gh-pages'
+    end
+    File.rm_rf! "docs"
+    IO.puts IO.ANSI.escape("%{green}Updated docs pushed to origin/gh-pages")
+  end
+
 end
