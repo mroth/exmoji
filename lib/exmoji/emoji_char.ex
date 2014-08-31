@@ -73,7 +73,7 @@ defmodule Exmoji.EmojiChar do
   Is the `EmojiChar` represented by a doublebyte codepoint in Unicode?
   """
   def doublebyte?(%EmojiChar{unified: id}) do
-    id |> String.match?(~r/-/)
+    id |> String.contains? "-"
   end
 
   @doc """
