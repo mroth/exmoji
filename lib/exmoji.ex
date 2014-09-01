@@ -164,6 +164,12 @@ defmodule Exmoji do
 
   @doc """
   Convert a unified ID directly to its bitstring glyph representation.
+
+  ## Example
+
+      iex> Exmoji.unified_to_char("1F47E")
+      "👾"
+
   """
   def unified_to_char(uid) do
     uid
