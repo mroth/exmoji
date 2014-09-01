@@ -116,10 +116,10 @@ defmodule Exmoji do
   name keywords.
   """
   def find_by_short_name(sname) do
-    @emoji_chars |> Enum.filter( &(_matches_short_name(&1, sname)) )
+    target = String.downcase(sname)
+    @emoji_chars |> Enum.filter( &(_matches_short_name(&1, target)) )
   end
   defp _matches_short_name(%EmojiChar{short_names: short_names}, target) do
-    target = String.downcase(target)
     Enum.any? short_names, fn(sn) -> String.contains?(sn, target) end
   end
 
