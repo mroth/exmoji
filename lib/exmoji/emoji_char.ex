@@ -47,8 +47,8 @@ defmodule Exmoji.EmojiChar do
     Exmoji.unified_to_char(ec.unified)
   end
   def render(ec, variant_encoding: true) do
-    case EmojiChar.variant?(ec) do
-      true  -> Exmoji.unified_to_char( EmojiChar.variant(ec) )
+    case variant?(ec) do
+      true  -> Exmoji.unified_to_char( variant(ec) )
       false -> Exmoji.unified_to_char( ec.unified )
     end
   end
