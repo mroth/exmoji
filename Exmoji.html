@@ -184,7 +184,7 @@ name keywords</p>
   <div class="docstring"><p>Returns a list of all <code class="inline">EmojiChar</code> that are represented as doublebyte encoding.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L45" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L46" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -221,7 +221,7 @@ results with different types of values.</p>
 &quot;1F47E&quot;</code></pre>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L188" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L192" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -246,7 +246,7 @@ renderings of a single glyph will be included, meaning that:</p>
 </ol>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L68" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L66" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -261,7 +261,7 @@ renderings of a single glyph will be included, meaning that:</p>
   
   <div class="docstring"></div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L69" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L67" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -279,7 +279,7 @@ renderings of a single glyph will be included, meaning that:</p>
 significance, see similar discussion for the <code class="inline">EmojiChar.chars/1</code> function.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L84" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L82" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -294,7 +294,7 @@ significance, see similar discussion for the <code class="inline">EmojiChar.char
   
   <div class="docstring"></div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L85" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L83" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -318,7 +318,7 @@ iex&gt; for t &lt;- Exmoji.find_by_name(&quot;tree&quot;), do: t.name
 &quot;TANABATA TREE&quot;]</code></pre>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L108" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L106" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -335,7 +335,7 @@ iex&gt; for t &lt;- Exmoji.find_by_name(&quot;tree&quot;), do: t.name
 name keywords.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L118" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L116" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -354,7 +354,7 @@ identifiers if you are parsing text that uses them to indicate the presence of
 a keyword.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L134" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L132" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -370,7 +370,7 @@ a keyword.</p>
   <div class="docstring"><p>Finds an <code class="inline">EmojiChar</code> based on the unified codepoint ID.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L150" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L148" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -384,9 +384,12 @@ a keyword.</p>
   </div>
   
   <div class="docstring"><p>Convert a unified ID directly to its bitstring glyph representation.</p>
+<h2>Example</h2>
+<pre><code>iex&gt; Exmoji.unified_to_char(&quot;1F47E&quot;)
+&quot;👾&quot;</code></pre>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L168" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L172" class="view_source">Source</a>
   
 </div>
 

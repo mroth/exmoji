@@ -52,7 +52,8 @@ end
 Modules
 -------
 Full API documentation is available via standard module docs or here:
-TODO
+https://mroth.github.io/exmoji/
+
 
 #### Exmoji
 The main library, with detailed search and conversion functions.
