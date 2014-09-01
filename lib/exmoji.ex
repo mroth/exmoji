@@ -42,16 +42,14 @@ defmodule Exmoji do
   @doc """
   Returns a list of all `EmojiChar` that are represented as doublebyte encoding.
   """
-  def all_doublebyte do
-    Enum.filter @emoji_chars, &EmojiChar.doublebyte?/1
-  end
+  @all_doublebyte_cache Enum.filter(@emoji_chars, &EmojiChar.doublebyte?/1)
+  def all_doublebyte, do: @all_doublebyte_cache
 
   @doc """
   Returns a list of all `EmojiChar` that have at least one variant encoding.
   """
-  def all_with_variants do
-    Enum.filter @emoji_chars, &EmojiChar.variant?/1
-  end
+  @all_variant_cache Enum.filter(@emoji_chars, &EmojiChar.variant?/1)
+  def all_with_variants, do: @all_variant_cache
 
 
   @doc """
