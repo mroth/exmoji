@@ -104,8 +104,8 @@ defmodule Exmoji do
 
   """
   def find_by_name(name) do
-    @emoji_chars
-    |> Enum.filter( fn x -> String.contains?(x.name, String.upcase(name)) end )
+    name = String.upcase(name)
+    @emoji_chars |> Enum.filter( fn x -> String.contains?(x.name, name) end )
   end
 
 
