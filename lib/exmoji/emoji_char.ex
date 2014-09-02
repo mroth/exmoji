@@ -8,10 +8,10 @@ defmodule Exmoji.EmojiChar do
   * `name` - The standardized name used in the Unicode specification to
     represent this emoji character.
   * `unified` - The primary unified codepoint ID for the emoji.
-  * `variations` - All list of variant codepoints that may also represent this
+  * `variations` - A list of all variant codepoints that may also represent this
     emoji.
   * `short_name` - The canonical "short name" or keyword used in many systems to
-    refer to this emoji. Often surrounded by `:colons:`` in systems like GitHub
+    refer to this emoji. Often surrounded by `:colons:` in systems like GitHub
     & Campfire.
   * `short_names` - A full list of possible keywords for the emoji.
   * `text` - An alternate textual representation of the emoji, for example a
@@ -39,7 +39,7 @@ defmodule Exmoji.EmojiChar do
 
   By passing options field `variant_encoding` you can manually specify whether
   the variant encoding selector should be used to hint to rendering devices
-  that "graphic" representation should be used.  By default, we use this for all
+  that "graphic" representation should be used. By default, we use this for all
   Emoji characters that contain a possible variant.
   """
   def render(ec, options \\ [variant_encoding: true])
@@ -61,7 +61,7 @@ defmodule Exmoji.EmojiChar do
   Returns a list of all possible bitstring renderings of an `EmojiChar`.
 
   E.g., normal, with variant selectors, etc. This is useful if you want to have
-  all possible values to match against when searching for the glyph in a string
+  all possible values to match against when searching for the emoji in a string
   representation.
   """
   def chars(%EmojiChar{unified: uid, variations: variations}) do

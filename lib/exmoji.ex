@@ -53,7 +53,7 @@ defmodule Exmoji do
 
 
   @doc """
-  Returns a list of all known emoji characters rendered as Unicode bitstrings.
+  Returns a list of all known Emoji characters rendered as Unicode bitstrings.
 
   By default, the default rendering options for this library will be used.
   However, if you pass the option of `include_variants: true` then all possible
@@ -90,7 +90,7 @@ defmodule Exmoji do
 
 
   @doc """
-  Finds any `EmojiChar` that contains given string in its name.
+  Finds any `EmojiChar` that contains given string in its official name.
 
   ## Examples
 
@@ -143,7 +143,7 @@ defmodule Exmoji do
 
 
   @doc """
-  Finds an `EmojiChar` based on the unified codepoint ID.
+  Finds a specific `EmojiChar` based on the unified codepoint ID.
   """
   def from_unified(uid) do
     uid |> String.upcase |> _from_unified
