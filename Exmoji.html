@@ -89,25 +89,17 @@ this library may be your new best friend.</p>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#chars/0">chars()</a></td>
+  <td class="summary_signature"><a href="#chars/1">chars(opts \\ [include_variants: false])</a></td>
   
     <td class="summary_synopsis"><p>Returns a list of all known Emoji characters rendered as Unicode bitstrings</p>
 </td>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#chars/1">chars(list1)</a></td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#codepoints/0">codepoints()</a></td>
+  <td class="summary_signature"><a href="#codepoints/1">codepoints(opts \\ [include_variants: false])</a></td>
   
     <td class="summary_synopsis"><p>Returns a list of all known codepoints representing Emoji characters</p>
 </td>
-  
-</tr>
-<tr>
-  <td class="summary_signature"><a href="#codepoints/1">codepoints(list1)</a></td>
   
 </tr>
 <tr>
@@ -228,11 +220,11 @@ iex&gt; Exmoji.char_to_unified(&quot;#️⃣&quot;)
   
 </div>
 <div class="detail">
-  <div class="detail_header" id="chars/0">
-    <span class="signature"><strong>chars()</strong></span>
+  <div class="detail_header" id="chars/1">
+    <span class="signature"><strong>chars(opts \\ [include_variants: false])</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
-      <a href="#chars/0" class="detail_link" title="Link to this function">#</a>
+      <a href="#chars/1" class="detail_link" title="Link to this function">#</a>
       <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
     </div>
   </div>
@@ -253,41 +245,8 @@ renderings of a single glyph will be included, meaning that:</p>
   
 </div>
 <div class="detail">
-  <div class="detail_header" id="chars/1">
-    <span class="signature"><strong>chars(list1)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#chars/1" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-  <div class="docstring"></div>
-  
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L67" class="view_source">Source</a>
-  
-</div>
-<div class="detail">
-  <div class="detail_header" id="codepoints/0">
-    <span class="signature"><strong>codepoints()</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#codepoints/0" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-  <div class="docstring"><p>Returns a list of all known codepoints representing Emoji characters.</p>
-<p>This function also accepts the <code class="inline">include_variants</code> option, for details on its
-significance, see similar discussion for the <code class="inline">EmojiChar.chars/1</code> function.</p>
-</div>
-  
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L82" class="view_source">Source</a>
-  
-</div>
-<div class="detail">
   <div class="detail_header" id="codepoints/1">
-    <span class="signature"><strong>codepoints(list1)</strong></span>
+    <span class="signature"><strong>codepoints(opts \\ [include_variants: false])</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
       <a href="#codepoints/1" class="detail_link" title="Link to this function">#</a>
@@ -295,9 +254,12 @@ significance, see similar discussion for the <code class="inline">EmojiChar.char
     </div>
   </div>
   
-  <div class="docstring"></div>
+  <div class="docstring"><p>Returns a list of all known codepoints representing Emoji characters.</p>
+<p>This function also accepts the <code class="inline">include_variants</code> option, for details on its
+significance, see similar discussion for the <a href="Exmoji.html#chars/1"><code class="inline">Exmoji.chars/1</code></a> function.</p>
+</div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L83" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L82" class="view_source">Source</a>
   
 </div>
 <div class="detail">
