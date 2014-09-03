@@ -183,10 +183,13 @@ defmodule Exmoji do
   This is a conversion operation, not a match, so it may produce unexpected
   results with different types of values.
 
-  ## Example
+  ## Examples
 
       iex> Exmoji.char_to_unified("👾")
       "1F47E"
+
+      iex> Exmoji.char_to_unified("\x{23}\x{fe0f}\x{20e3}")
+      "0023-FE0F-20E3"
 
   """
   def char_to_unified(char) do
