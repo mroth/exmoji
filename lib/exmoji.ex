@@ -77,7 +77,7 @@ defmodule Exmoji do
   Returns a list of all known codepoints representing Emoji characters.
 
   This function also accepts the `include_variants` option, for details on its
-  significance, see similar discussion for the `EmojiChar.chars/1` function.
+  significance, see similar discussion for the `Exmoji.chars/1` function.
   """
   def codepoints(opts \\ [include_variants: false])
   def codepoints(include_variants: false) do
