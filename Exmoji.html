@@ -89,14 +89,14 @@ this library may be your new best friend.</p>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#chars/1">chars(opts \\ [include_variants: false])</a></td>
+  <td class="summary_signature"><a href="#chars/1">chars(opts \\ [])</a></td>
   
     <td class="summary_synopsis"><p>Returns a list of all known Emoji characters rendered as Unicode bitstrings</p>
 </td>
   
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#codepoints/1">codepoints(opts \\ [include_variants: false])</a></td>
+  <td class="summary_signature"><a href="#codepoints/1">codepoints(opts \\ [])</a></td>
   
     <td class="summary_synopsis"><p>Returns a list of all known codepoints representing Emoji characters</p>
 </td>
@@ -216,12 +216,12 @@ iex&gt; Exmoji.char_to_unified(&quot;#️⃣&quot;)
 &quot;0023-FE0F-20E3&quot;</code></pre>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L187" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L189" class="view_source">Source</a>
   
 </div>
 <div class="detail">
   <div class="detail_header" id="chars/1">
-    <span class="signature"><strong>chars(opts \\ [include_variants: false])</strong></span>
+    <span class="signature"><strong>chars(opts \\ [])</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
       <a href="#chars/1" class="detail_link" title="Link to this function">#</a>
@@ -246,7 +246,7 @@ renderings of a single glyph will be included, meaning that:</p>
 </div>
 <div class="detail">
   <div class="detail_header" id="codepoints/1">
-    <span class="signature"><strong>codepoints(opts \\ [include_variants: false])</strong></span>
+    <span class="signature"><strong>codepoints(opts \\ [])</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
       <a href="#codepoints/1" class="detail_link" title="Link to this function">#</a>
@@ -259,7 +259,7 @@ renderings of a single glyph will be included, meaning that:</p>
 significance, see similar discussion for the <a href="Exmoji.html#chars/1"><code class="inline">Exmoji.chars/1</code></a> function.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L82" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L83" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -283,7 +283,7 @@ iex&gt; for t &lt;- Exmoji.find_by_name(&quot;tree&quot;), do: t.name
 &quot;TANABATA TREE&quot;]</code></pre>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L106" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L108" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -300,7 +300,7 @@ iex&gt; for t &lt;- Exmoji.find_by_name(&quot;tree&quot;), do: t.name
 name keywords.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L116" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L118" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -319,7 +319,7 @@ identifiers if you are parsing text that uses them to indicate the presence of
 a keyword.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L132" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L134" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -335,7 +335,7 @@ a keyword.</p>
   <div class="docstring"><p>Finds a specific <code class="inline">EmojiChar</code> based on the unified codepoint ID.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L145" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L147" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -354,7 +354,7 @@ a keyword.</p>
 &quot;👾&quot;</code></pre>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L164" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L166" class="view_source">Source</a>
   
 </div>
 
