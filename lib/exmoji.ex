@@ -84,7 +84,7 @@ defmodule Exmoji do
     Enum.map(@emoji_chars, &(&1.unified))
   end
   def codepoints(include_variants: true) do
-    Enum.map(@emoji_chars, &([&1.unified] ++ &1.variations))
+    Enum.map(@emoji_chars, &EmojiChar.codepoint_ids/1)
     |> List.flatten
   end
 
@@ -136,7 +136,6 @@ defmodule Exmoji do
   for ec <- @emoji_chars, sn <- ec.short_names do
     defp _from_short_name( unquote(sn) ), do: unquote(Macro.escape(ec))
   end
-
   defp _from_short_name(_), do: nil
 
 
@@ -147,14 +146,9 @@ defmodule Exmoji do
     uid |> String.upcase |> _from_unified
   end
 
-  for ec <- @emoji_chars do
-    defp _from_unified( unquote(ec.unified) ), do: unquote(Macro.escape(ec))
-
-    for variant <- ec.variations do
-      defp _from_unified( unquote(variant) ), do: unquote(Macro.escape(ec))
-    end
+  for ec <- @emoji_chars, cp <- EmojiChar.codepoint_ids(ec) do
+    defp _from_unified( unquote(cp) ), do: unquote(Macro.escape(ec))
   end
-
   defp _from_unified(_), do: nil
 
 

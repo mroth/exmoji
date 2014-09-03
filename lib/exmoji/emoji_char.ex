@@ -64,8 +64,8 @@ defmodule Exmoji.EmojiChar do
   all possible values to match against when searching for the emoji in a string
   representation.
   """
-  def chars(%EmojiChar{unified: uid, variations: variations}) do
-    [uid] ++ variations
+  def chars(%EmojiChar{}=ec) do
+    codepoint_ids(ec)
     |> Enum.map(&Exmoji.unified_to_char/1)
   end
 
