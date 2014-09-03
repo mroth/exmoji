@@ -91,7 +91,7 @@ this library may be your new best friend.</p>
 <tr>
   <td class="summary_signature"><a href="#chars/0">chars()</a></td>
   
-    <td class="summary_synopsis"><p>Returns a list of all known emoji characters rendered as Unicode bitstrings</p>
+    <td class="summary_synopsis"><p>Returns a list of all known Emoji characters rendered as Unicode bitstrings</p>
 </td>
   
 </tr>
@@ -113,7 +113,7 @@ this library may be your new best friend.</p>
 <tr>
   <td class="summary_signature"><a href="#find_by_name/1">find_by_name(name)</a></td>
   
-    <td class="summary_synopsis"><p>Finds any <code class="inline">EmojiChar</code> that contains given string in its name</p>
+    <td class="summary_synopsis"><p>Finds any <code class="inline">EmojiChar</code> that contains given string in its official name</p>
 </td>
   
 </tr>
@@ -135,7 +135,7 @@ name keywords</p>
 <tr>
   <td class="summary_signature"><a href="#from_unified/1">from_unified(uid)</a></td>
   
-    <td class="summary_synopsis"><p>Finds an <code class="inline">EmojiChar</code> based on the unified codepoint ID</p>
+    <td class="summary_synopsis"><p>Finds a specific <code class="inline">EmojiChar</code> based on the unified codepoint ID</p>
 </td>
   
 </tr>
@@ -216,12 +216,15 @@ name keywords</p>
   <div class="docstring"><p>Convert a native bitstring glyph to its unified codepoint ID.</p>
 <p>This is a conversion operation, not a match, so it may produce unexpected
 results with different types of values.</p>
-<h2>Example</h2>
+<h2>Examples</h2>
 <pre><code>iex&gt; Exmoji.char_to_unified(&quot;👾&quot;)
-&quot;1F47E&quot;</code></pre>
+&quot;1F47E&quot;
+
+iex&gt; Exmoji.char_to_unified(&quot;#️⃣&quot;)
+&quot;0023-FE0F-20E3&quot;</code></pre>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L192" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L187" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -234,7 +237,7 @@ results with different types of values.</p>
     </div>
   </div>
   
-  <div class="docstring"><p>Returns a list of all known emoji characters rendered as Unicode bitstrings.</p>
+  <div class="docstring"><p>Returns a list of all known Emoji characters rendered as Unicode bitstrings.</p>
 <p>By default, the default rendering options for this library will be used.
 However, if you pass the option of <code class="inline">include_variants: true</code> then all possible
 renderings of a single glyph will be included, meaning that:</p>
@@ -307,7 +310,7 @@ significance, see similar discussion for the <code class="inline">EmojiChar.char
     </div>
   </div>
   
-  <div class="docstring"><p>Finds any <code class="inline">EmojiChar</code> that contains given string in its name.</p>
+  <div class="docstring"><p>Finds any <code class="inline">EmojiChar</code> that contains given string in its official name.</p>
 <h2>Examples</h2>
 <pre><code>iex&gt; Exmoji.find_by_name &quot;father&quot;
 [%Exmoji.EmojiChar{name: &quot;FATHER CHRISTMAS&quot;, short_name: &quot;santa&quot;,
@@ -367,10 +370,10 @@ a keyword.</p>
     </div>
   </div>
   
-  <div class="docstring"><p>Finds an <code class="inline">EmojiChar</code> based on the unified codepoint ID.</p>
+  <div class="docstring"><p>Finds a specific <code class="inline">EmojiChar</code> based on the unified codepoint ID.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L148" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L145" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -389,7 +392,7 @@ a keyword.</p>
 &quot;👾&quot;</code></pre>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L172" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji.ex#L164" class="view_source">Source</a>
   
 </div>
 

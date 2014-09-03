@@ -50,11 +50,11 @@ metadata.</p>
 </li>
 <li><code class="inline">unified</code> - The primary unified codepoint ID for the emoji.
 </li>
-<li><code class="inline">variations</code> - All list of variant codepoints that may also represent this
+<li><code class="inline">variations</code> - A list of all variant codepoints that may also represent this
   emoji.
 </li>
 <li><code class="inline">short_name</code> - The canonical “short name” or keyword used in many systems to
-  refer to this emoji. Often surrounded by `:colons:`` in systems like GitHub
+  refer to this emoji. Often surrounded by <code class="inline">:colons:</code> in systems like GitHub
   &amp; Campfire.
 </li>
 <li><code class="inline">short_names</code> - A full list of possible keywords for the emoji.
@@ -78,9 +78,16 @@ metadata.</p>
         <h2 id="summary">Summary<div class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></div></h2>
         <table class="summary">
           <tr>
-  <td class="summary_signature"><a href="#chars/1">chars(emojichar)</a></td>
+  <td class="summary_signature"><a href="#chars/1">chars(ec)</a></td>
   
     <td class="summary_synopsis"><p>Returns a list of all possible bitstring renderings of an <code class="inline">EmojiChar</code></p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#codepoint_ids/1">codepoint_ids(emojichar)</a></td>
+  
+    <td class="summary_synopsis"><p>Returns a list of all possible codepoint string IDs of an <code class="inline">EmojiChar</code></p>
 </td>
   
 </tr>
@@ -124,7 +131,7 @@ printing to screen</p>
           <h2>Functions</h2>
           <div class="detail">
   <div class="detail_header" id="chars/1">
-    <span class="signature"><strong>chars(emojichar)</strong></span>
+    <span class="signature"><strong>chars(ec)</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
       <a href="#chars/1" class="detail_link" title="Link to this function">#</a>
@@ -134,11 +141,32 @@ printing to screen</p>
   
   <div class="docstring"><p>Returns a list of all possible bitstring renderings of an <code class="inline">EmojiChar</code>.</p>
 <p>E.g., normal, with variant selectors, etc. This is useful if you want to have
-all possible values to match against when searching for the glyph in a string
+all possible values to match against when searching for the emoji in a string
 representation.</p>
 </div>
   
     <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji/emoji_char.ex#L67" class="view_source">Source</a>
+  
+</div>
+<div class="detail">
+  <div class="detail_header" id="codepoint_ids/1">
+    <span class="signature"><strong>codepoint_ids(emojichar)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#codepoint_ids/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <div class="docstring"><p>Returns a list of all possible codepoint string IDs of an <code class="inline">EmojiChar</code>.</p>
+<p>E.g., normal, with variant selectors, etc. This is useful if you want to have
+all possible values to match against.</p>
+<h2>Example</h2>
+<pre><code>iex&gt; Exmoji.from_short_name(&quot;cloud&quot;) |&gt; Exmoji.EmojiChar.codepoint_ids
+[&quot;2601&quot;,&quot;2601-FE0F&quot;]</code></pre>
+</div>
+  
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji/emoji_char.ex#L84" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -154,7 +182,7 @@ representation.</p>
   <div class="docstring"><p>Is the <code class="inline">EmojiChar</code> represented by a doublebyte codepoint in Unicode?</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji/emoji_char.ex#L75" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji/emoji_char.ex#L91" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -171,7 +199,7 @@ representation.</p>
 printing to screen.</p>
 <p>By passing options field <code class="inline">variant_encoding</code> you can manually specify whether
 the variant encoding selector should be used to hint to rendering devices
-that “graphic” representation should be used.  By default, we use this for all
+that “graphic” representation should be used. By default, we use this for all
 Emoji characters that contain a possible variant.</p>
 </div>
   
@@ -198,7 +226,7 @@ doublebyte Emoji characters.</p>
 <p>If there is no variant-encoding for a character, returns nil.</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji/emoji_char.ex#L100" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji/emoji_char.ex#L116" class="view_source">Source</a>
   
 </div>
 <div class="detail">
@@ -214,7 +242,7 @@ doublebyte Emoji characters.</p>
   <div class="docstring"><p>Does the <code class="inline">EmojiChar</code> have an alternate Unicode variant encoding?</p>
 </div>
   
-    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji/emoji_char.ex#L82" class="view_source">Source</a>
+    <a href="https://github.com/mroth/exmoji/blob/master/lib/exmoji/emoji_char.ex#L98" class="view_source">Source</a>
   
 </div>
 

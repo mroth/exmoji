@@ -111,3 +111,8 @@ may be confusing because of the charlist/bitstring division (this library uses
 bitstrings).  I may rename all those API functions for this version of the lib
 because of that, but for now I'm keeping it consistent with the official Unicode
 names for things...
+
+
+License
+-----------
+[The MIT License (MIT)](LICENSE)
