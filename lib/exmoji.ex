@@ -133,10 +133,8 @@ defmodule Exmoji do
     sname |> String.downcase |> _from_short_name
   end
 
-  for ec <- @emoji_chars do
-    for sn <- ec.short_names do
-      defp _from_short_name( unquote(sn) ), do: unquote(Macro.escape(ec))
-    end
+  for ec <- @emoji_chars, sn <- ec.short_names do
+    defp _from_short_name( unquote(sn) ), do: unquote(Macro.escape(ec))
   end
 
   defp _from_short_name(_), do: nil

@@ -129,6 +129,11 @@ defmodule ExmojiTest do
     assert Exmoji.from_short_name("SCREAM") == Exmoji.from_short_name("scream")
   end
 
+  test ".from_short_name - works on secondary keywords" do
+    assert Exmoji.from_short_name("poop") == Exmoji.from_short_name("hankey")
+    assert Exmoji.from_short_name("shit") == Exmoji.from_short_name("hankey")
+  end
+
   test ".from_short_name - returns nil if nothing matches" do
     assert Exmoji.from_short_name("taco") == nil
   end
