@@ -57,7 +57,9 @@ defmodule Exmoji.Mixfile do
 
   defp aliases do
     [
-      clean: ["clean", &clean_docs/1, &clean_benchmarks/1],
+      clean:          ["clean", &clean_docs/1, &clean_benchmarks/1],
+      "clean.docs":   [&clean_docs/1],
+      "clean.bench":  [&clean_benchmarks/1],
       "docs.release": [&release_docs/1]
     ]
   end
@@ -67,6 +69,7 @@ defmodule Exmoji.Mixfile do
 
   defp release_docs(_) do
     additional_files = ["README.md"]
+    Mix.Task.run "clean.docs"
     :os.cmd 'git clone --branch gh-pages `git config --get remote.origin.url` docs'
     Mix.Task.run "docs"
     Enum.each(additional_files, &File.cp!(&1, Path.join("docs", &1)))
