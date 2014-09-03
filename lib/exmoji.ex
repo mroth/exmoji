@@ -63,13 +63,14 @@ defmodule Exmoji do
   2. This list is now suitable for exhaustably matching against in a search.
 
   """
-  def chars(opts \\ [include_variants: false])
-  def chars(include_variants: false) do
-    Enum.map(@emoji_chars, &EmojiChar.render/1)
-  end
-  def chars(include_variants: true) do
-    Enum.map(@emoji_chars, &EmojiChar.chars/1)
-    |> List.flatten
+  def chars(opts \\ []) do
+    case Keyword.get(opts, :include_variants, false) do
+      false ->
+        Enum.map(@emoji_chars, &EmojiChar.render/1)
+      true ->
+        Enum.map(@emoji_chars, &EmojiChar.chars/1)
+        |> List.flatten
+    end
   end
 
 
@@ -79,13 +80,14 @@ defmodule Exmoji do
   This function also accepts the `include_variants` option, for details on its
   significance, see similar discussion for the `Exmoji.chars/1` function.
   """
-  def codepoints(opts \\ [include_variants: false])
-  def codepoints(include_variants: false) do
-    Enum.map(@emoji_chars, &(&1.unified))
-  end
-  def codepoints(include_variants: true) do
-    Enum.map(@emoji_chars, &EmojiChar.codepoint_ids/1)
-    |> List.flatten
+  def codepoints(opts \\ []) do
+    case Keyword.get(opts, :include_variants, false) do
+      false ->
+        Enum.map(@emoji_chars, &(&1.unified))
+      true ->
+        Enum.map(@emoji_chars, &EmojiChar.codepoint_ids/1)
+        |> List.flatten
+    end
   end
 
 
