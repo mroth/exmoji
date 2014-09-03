@@ -199,8 +199,9 @@ defmodule Exmoji do
     |> Enum.join("-")
     |> String.upcase
   end
-  defp padded_hex_string(codepoint) do
-    << cp_int_value :: utf8 >> = codepoint
+  # produce a string representation of the integer value of a codepoint, in hex
+  # this should be zero-padded to a minimum of 4 digits
+  defp padded_hex_string(<< cp_int_value :: utf8 >>) do
     cp_int_value |> Integer.to_string(16) |> String.rjust(4,?0)
   end
 
