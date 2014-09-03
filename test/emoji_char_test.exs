@@ -8,7 +8,8 @@ defmodule EmojiCharTest do
     usflag    = %EmojiChar{unified: "1F1FA-1F1F8"}
     hourglass = %EmojiChar{unified: "231B", variations: ["231B-FE0F"]}
     cloud     = %EmojiChar{unified: "2601", variations: ["2601-FE0F"]}
-    {:ok, [invader: invader, usflag: usflag, hourglass: hourglass, cloud: cloud]}
+    hash      = %EmojiChar{unified: "0023-20E3", variations: ["0023-FE0F-20E3"]}
+    {:ok, [invader: invader, usflag: usflag, hourglass: hourglass, cloud: cloud, hash: hash]}
   end
 
   #
@@ -50,7 +51,17 @@ defmodule EmojiCharTest do
   #
   test ".chars - should return an array of all possible string render variations", examples do
     assert EmojiChar.chars(examples[:invader]) == ["👾"]
-    assert EmojiChar.chars(examples[:cloud]) == ["\x{2601}","\x{2601}\x{FE0F}"]
+    assert EmojiChar.chars(examples[:cloud])   == ["\x{2601}","\x{2601}\x{FE0F}"]
+  end
+
+
+  #
+  # # codepoints - all possible unified codepoint IDs for an EmojiChar
+  #
+  test ".codepoints - should return an array of all possible codepoint variations", examples do
+    assert EmojiChar.codepoint_ids(examples[:invader]) == ["1F47E"]
+    assert EmojiChar.codepoint_ids(examples[:cloud])   == ["2601","2601-FE0F"]
+    assert EmojiChar.codepoint_ids(examples[:hash])    == ["0023-20E3","0023-FE0F-20E3"]
   end
 
 

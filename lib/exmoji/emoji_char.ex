@@ -70,6 +70,22 @@ defmodule Exmoji.EmojiChar do
   end
 
   @doc """
+  Returns a list of all possible codepoint string IDs of an `EmojiChar`.
+
+  E.g., normal, with variant selectors, etc. This is useful if you want to have
+  all possible values to match against.
+
+  ## Example
+
+      iex> Exmoji.from_short_name("cloud") |> Exmoji.EmojiChar.codepoint_ids
+      ["2601","2601-FE0F"]
+
+  """
+  def codepoint_ids(%EmojiChar{unified: uid, variations: variations}) do
+    [uid] ++ variations
+  end
+
+  @doc """
   Is the `EmojiChar` represented by a doublebyte codepoint in Unicode?
   """
   def doublebyte?(%EmojiChar{unified: id}) do
