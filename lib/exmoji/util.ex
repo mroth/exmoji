@@ -58,20 +58,13 @@ defmodule Exmoji.Util do
       "👾"
 
   """
-  for ec <- Exmoji.all do
-    uid = ec.unified
-    def unified_to_char( unquote(uid) ) do
-      unquote( Unified._unified_to_char(uid) )
+  for ec <- Exmoji.all, cp <- EmojiChar.codepoint_ids(ec) do
+    def unified_to_char( unquote(cp) ) do
+      unquote( Unified._unified_to_char(cp) )
     end
   end
 
-  for ec <- Exmoji.all_with_variants do
-    variant_id = EmojiChar.variant(ec)
-    def unified_to_char( unquote(variant_id) ) do
-      unquote( Unified._unified_to_char(variant_id) )
-    end
-  end
-
+  # if not found, fallback
   def unified_to_char(uid), do: Unified._unified_to_char(uid)
 
 
@@ -87,17 +80,9 @@ defmodule Exmoji.Util do
       "0023-FE0F-20E3"
 
   """
-  # create pattern matches (variants must be first)
-  for ec <- Exmoji.all_with_variants do
-    variant = List.first(ec.variations)
-    def char_to_unified( unquote(Unified._unified_to_char(variant)) ) do
-      unquote(variant)
-    end
-  end
-
-  for ec <- Exmoji.all do
-    def char_to_unified( unquote(Unified._unified_to_char(ec.unified)) ) do
-      unquote(ec.unified)
+  for ec <- Exmoji.all, cp <- EmojiChar.codepoint_ids(ec) do
+    def char_to_unified( unquote(Unified._unified_to_char(cp)) ) do
+      unquote(cp)
     end
   end
 
