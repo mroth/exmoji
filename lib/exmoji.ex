@@ -63,7 +63,7 @@ defmodule Exmoji do
   2. This list is now suitable for exhaustably matching against in a search.
 
   """
-  def chars, do: chars(include_variants: false)
+  def chars(opts \\ [include_variants: false])
   def chars(include_variants: false) do
     Enum.map(@emoji_chars, &EmojiChar.render/1)
   end
@@ -79,7 +79,7 @@ defmodule Exmoji do
   This function also accepts the `include_variants` option, for details on its
   significance, see similar discussion for the `EmojiChar.chars/1` function.
   """
-  def codepoints, do: codepoints(include_variants: false)
+  def codepoints(opts \\ [include_variants: false])
   def codepoints(include_variants: false) do
     Enum.map(@emoji_chars, &(&1.unified))
   end
