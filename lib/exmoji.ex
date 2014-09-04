@@ -107,7 +107,7 @@ defmodule Exmoji do
   """
   def find_by_name(name) do
     name = String.upcase(name)
-    @emoji_chars |> Enum.filter( fn x -> String.contains?(x.name, name) end )
+    Enum.filter( @emoji_chars, &(String.contains?(&1.name, name)) )
   end
 
 
@@ -117,10 +117,11 @@ defmodule Exmoji do
   """
   def find_by_short_name(sname) do
     target = String.downcase(sname)
-    @emoji_chars |> Enum.filter( &(_matches_short_name(&1, target)) )
+    Enum.filter( @emoji_chars, &(matches_short_name(&1, target)) )
   end
-  defp _matches_short_name(%EmojiChar{short_names: short_names}, target) do
-    Enum.any? short_names, fn(sn) -> String.contains?(sn, target) end
+
+  defp matches_short_name(%EmojiChar{} = ec, target) do
+    Enum.any?( ec.short_names, &(String.contains?(&1, target)) )
   end
 
 
