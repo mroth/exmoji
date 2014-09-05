@@ -23,12 +23,12 @@ defmodule Exmoji do
   rawdata = Jazz.Decode.it! rawfile, keys: :atoms
   emoji_chars = for char <- rawdata do
     %EmojiChar{
-      name: char.name,
-      unified: char.unified,
-      variations: char.variations,
-      short_name: char.short_name,
-      short_names: char.short_names,
-      text: char.text
+      name:         char.name,
+      unified:      char.unified,
+      variations:   char.variations,
+      short_name:   char.short_name,
+      short_names:  char.short_names,
+      text:         char.text
     }
   end
   @emoji_chars emoji_chars
