@@ -18,8 +18,7 @@ defmodule Exmoji.Mixfile do
 
   defp description do
     """
-    An Elixir/Erlang library providing low level operations for dealing with
-    Emoji glyphs in the Unicode standard.
+    Emoji encoding swiss army knife for dealing with Unicode and other gotchas.
     """
   end
 
