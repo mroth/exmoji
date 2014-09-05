@@ -4,7 +4,7 @@ defmodule Exmoji.Mixfile do
   def project do
     [
       app:           :exmoji,
-      version:       "0.2.0-pre",
+      version:       "0.2.0",
       elixir:        "~> 0.15.1",
       deps:          deps,
       test_coverage: [tool: ExCoveralls],

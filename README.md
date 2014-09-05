@@ -15,12 +15,7 @@ is used in production by [Emojitracker.com][emojitracker] to parse well over
 100M+ emoji glyphs daily. This version was written to provide all the same
 functionality while being even higher performance. :dizzy:
 
-
-**WORK IN PROGRESS - NOT RELEASED JUST YET**
-
 [![Build Status](https://travis-ci.org/mroth/exmoji.svg?branch=master)](https://travis-ci.org/mroth/exmoji)
-
-Note: `excoveralls` is currently lying, actual test coverage is :100:.
 
 [doublebyte]: http://www.quora.com/Why-does-using-emoji-reduce-my-SMS-character-limit-to-70
 [variant]: http://www.unicode.org/L2/L2011/11438-emoji-var.pdf
@@ -120,7 +115,10 @@ Found some cloud!
 
 ## Contributing
 
-Please be sure to run `mix test` and help keep test coverage at :100:.
+Please be sure to run `mix test` and help keep test coverage at :100:. (Note:
+_excoveralls_ is currently lying, actual test coverage is 100%, but it
+doesn't seem to catch dynamically defined functions. Do `mix coveralls.details`
+and manually verify those for now.)
 
 There is a full benchmark suite available via `mix bench`.  Please
 run before and after your changes to ensure you have not caused a performance
