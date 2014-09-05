@@ -16,7 +16,7 @@ defmodule Exmoji do
   #
   # Read and parse the Emoji library from our vendored data file.
   #
-  vendor_data_file = "vendor/emoji-data/emoji.json"
+  vendor_data_file = "lib/vendor/emoji-data/emoji.json"
   @external_resource vendor_data_file
 
   rawfile = File.read! vendor_data_file
