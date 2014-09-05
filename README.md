@@ -15,12 +15,7 @@ is used in production by [Emojitracker.com][emojitracker] to parse well over
 100M+ emoji glyphs daily. This version was written to provide all the same
 functionality while being even higher performance. :dizzy:
 
-
-**WORK IN PROGRESS - NOT RELEASED JUST YET**
-
 [![Build Status](https://travis-ci.org/mroth/exmoji.svg?branch=master)](https://travis-ci.org/mroth/exmoji)
-
-Note: `excoveralls` is currently lying, actual test coverage is :100:.
 
 [doublebyte]: http://www.quora.com/Why-does-using-emoji-reduce-my-SMS-character-limit-to-70
 [variant]: http://www.unicode.org/L2/L2011/11438-emoji-var.pdf
@@ -30,17 +25,15 @@ Note: `excoveralls` is currently lying, actual test coverage is :100:.
 Installation
 ------------
 
-Add it to your deps list in your `mix.exs`. Once this package has been released
-_(e.g. not yet)_, you will be able to do:
+Add it to your deps list in your `mix.exs`.
 
 ```elixir
 defp deps do
-  [{:exmoji, "~> 0.0.1"}]
+  [{:exmoji, "~> 0.2.0"}]
 end
 ```
 
-In the meantime, or to get the development version, you can pull directly from
-GitHub:
+To get the development version, you can pull directly from GitHub:
 
 ```elixir
 defp deps do
@@ -61,19 +54,22 @@ The main library, with detailed search and conversion functions.
 Some examples:
 
 ```iex
-iex> Exmoji.from_unified("1F680")
-%Exmoji.EmojiChar{name: "ROCKET", short_name: "rocket", short_names: ["rocket"],
- text: nil, unified: "1F680", variations: []}
+iex> Exmoji.from_unified "0023-20E3"
+%Exmoji.EmojiChar{name: "HASH KEY", short_name: "hash", short_names: ["hash"],
+ text: nil, unified: "0023-20E3", variations: ["0023-FE0F-20E3"]}
 
-iex> Exmoji.find_by_short_name("MOON") |> Enum.count
+iex> Exmoji.all |> Enum.count
+845
+
+iex> Exmoji.all_with_variants |> Enum.count
+107
+
+iex> Exmoji.find_by_short_name("moon") |> Enum.count
 13
 
 iex> for t <- Exmoji.find_by_name("tree"), do: t.name
 ["EVERGREEN TREE", "DECIDUOUS TREE", "PALM TREE", "CHRISTMAS TREE",
 "TANABATA TREE"]
-
-iex> Exmoji.all_doublebyte |> Enum.count
-21
 ```
 
 #### Exmoji.EmojiChar
@@ -86,33 +82,48 @@ representation of an Emoji character suitable for transmission.  It understands
 which Emoji have variant encodings and will do the right thing to make sure they
 are likely to display correctly on the other end.
 
+```iex
+iex> alias Exmoji.EmojiChar
+nil
+
+iex> for e <- Exmoji.all, EmojiChar.doublebyte?(e), do: e.short_name
+["hash", "zero", "one", "two", "three", "four", "five", "six", "seven", "eight",
+ "nine", "cn", "de", "es", "fr", "gb", "it", "jp", "kr", "ru", "us"]
+
+iex> for m <- Exmoji.find_by_short_name("moon"), do: EmojiChar.render(m)
+["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘", "🌙", "🌚", "🌛", "🌜", "🌝"]
+
+```
+
 #### Exmoji.Scanner
 Provides very fast searches against binary strings for the presence of UTF-8
 encoded Emoji glyphs.  Whereas the Ruby and NodeJS versions of this library
-accomplish this via regular expressions, the Elixir version relies on binary
-pattern matching, making it faster.
+accomplish this via regular expressions, the Elixir version relies on optmized
+binary pattern matching, making it faster.
 
 An example:
 
 ```iex
-iex> Exmoji.Scanner.scan("flying on my 🚀 to visit the 👾 people.")
-[%Exmoji.EmojiChar{name: "ROCKET", short_name: "rocket",
-  short_names: ["rocket"], text: nil, unified: "1F680", variations: []},
- %Exmoji.EmojiChar{name: "ALIEN MONSTER", short_name: "space_invader",
-  short_names: ["space_invader"], text: nil, unified: "1F47E", variations: []}]
+iex> for ec <- Exmoji.Scanner.scan("I ♥ when marketers talk about the ☁.") do
+...>   IO.puts "Found some #{ec.short_name}!"
+...> end
+Found some hearts!
+Found some cloud!
+[:ok, :ok]
+
 ```
 
+## Contributing
 
-Terminology Note
-----------------
-This library uses the term "char" extensively to refer to a single emoji glyph
-in string encoding.  In Elixir/Erlang `char` means something specific, which
-may be confusing because of the charlist/bitstring division (this library uses
-bitstrings).  I may rename all those API functions for this version of the lib
-because of that, but for now I'm keeping it consistent with the official Unicode
-names for things...
+Please be sure to run `mix test` and help keep test coverage at :100:. (Note:
+_excoveralls_ is currently lying, actual test coverage is 100%, but it
+doesn't seem to catch dynamically defined functions. Do `mix coveralls.details`
+and manually verify those for now.)
 
+There is a full benchmark suite available via `mix bench`.  Please
+run before and after your changes to ensure you have not caused a performance
+regression.
 
-License
------------
+## License
+
 [The MIT License (MIT)](LICENSE)
