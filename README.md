@@ -29,7 +29,7 @@ Add it to your deps list in your `mix.exs`.
 
 ```elixir
 defp deps do
-  [{:exmoji, "~> 0.2.0"}]
+  [{:exmoji, "~> 0.2.1"}]
 end
 ```
 

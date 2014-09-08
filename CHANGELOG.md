@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 (8 September 2014)
+
+ * Update dependencies for Elixir 1.0 release.
+
 ## 0.2.0 (5 September 2014)
 
  * Initial release.
