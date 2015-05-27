@@ -4,9 +4,9 @@ otp_release:
   - 17.1
 
 elixir:
-  - 1.0.0-rc1
-  - 1.0.0-rc2
-  - 1.0.0
+  - 1.0.1  
+  - 1.0.2
+  - 1.0.3
 
 env:
   - MIX_ENV=test
