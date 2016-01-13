@@ -45,7 +45,7 @@ defmodule Exmoji.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:jazz,         "~> 0.2.1"},
+      {:poison,       "~> 1.5"},
       {:excoveralls,  "~> 0.3",                   only: :dev},
       {:benchfella,   github: "alco/benchfella",  only: :dev},
       {:earmark,      "~> 0.1",                   only: :dev},
