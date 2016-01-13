@@ -20,7 +20,7 @@ defmodule Exmoji do
   @external_resource vendor_data_file
 
   rawfile = File.read! vendor_data_file
-  rawdata = Jazz.Decode.it! rawfile, keys: :atoms
+  rawdata = Poison.decode! rawfile, keys: :atoms
   emoji_chars = for char <- rawdata do
     %EmojiChar{
       name:         char.name,
