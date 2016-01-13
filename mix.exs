@@ -46,10 +46,10 @@ defmodule Exmoji.Mixfile do
   defp deps do
     [
       {:poison,       "~> 1.5"},
-      {:excoveralls,  "~> 0.3",                   only: :dev},
-      {:benchfella,   github: "alco/benchfella",  only: :dev},
-      {:earmark,      "~> 0.1",                   only: :dev},
-      {:ex_doc,       "~> 0.6.0",                 only: :dev}
+      {:excoveralls,  "~> 0.4.5",                 only: :dev},
+      {:benchfella,   "~> 0.3.1",                 only: :dev},
+      {:earmark,      "~> 0.2.0",                 only: :dev},
+      {:ex_doc,       "~> 0.11.3",                only: :dev}
     ]
   end
 
@@ -63,7 +63,7 @@ defmodule Exmoji.Mixfile do
   end
 
   defp clean_benchmarks(_), do: File.rm_rf!("bench/snapshots")
-  defp clean_docs(_), do: File.rm_rf!("docs")
+  defp clean_docs(_), do: File.rm_rf!("doc")
 
   defp release_docs(_) do
     additional_files = ["README.md"]

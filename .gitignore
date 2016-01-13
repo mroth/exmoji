@@ -4,4 +4,4 @@ erl_crash.dump
 *.ez
 mix.lock
 /bench/snapshots
-/docs
+/doc
