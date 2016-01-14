@@ -27,7 +27,7 @@ defmodule Exmoji.Mixfile do
       maintainers:  [ "Matthew Rothenberg <mroth@mroth.info>" ],
       licenses:     [ "MIT" ],
       links:        %{
-                       "Docs"   => "https://mroth.github.io/exmoji/",
+                       "Docs"   => "https://hexdocs.pm/exmoji/",
                        "GitHub" => "https://github.com/mroth/exmoji"
                     }
     ]
@@ -57,27 +57,11 @@ defmodule Exmoji.Mixfile do
     [
       clean:          ["clean", &clean_docs/1, &clean_benchmarks/1],
       "clean.docs":   [&clean_docs/1],
-      "clean.bench":  [&clean_benchmarks/1],
-      "docs.release": [&release_docs/1]
+      "clean.bench":  [&clean_benchmarks/1]
     ]
   end
 
   defp clean_benchmarks(_), do: File.rm_rf!("bench/snapshots")
   defp clean_docs(_), do: File.rm_rf!("doc")
-
-  defp release_docs(_) do
-    additional_files = ["README.md"]
-    Mix.Task.run "clean.docs"
-    :os.cmd 'git clone --branch gh-pages `git config --get remote.origin.url` doc'
-    Mix.Task.run "docs"
-    Enum.each(additional_files, &File.cp!(&1, Path.join("doc", &1)))
-    File.cd! "doc", fn ->
-      :os.cmd 'git add -A .'
-      :os.cmd 'git commit -m "Updated docs"'
-      :os.cmd 'git push origin gh-pages'
-    end
-
-    Mix.shell.info [:green, "Updated docs pushed to origin/gh-pages."]
-  end
 
 end
