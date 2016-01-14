@@ -15,6 +15,7 @@ is used in production by [Emojitracker.com][emojitracker] to parse well over
 100M+ emoji glyphs daily. This version was written to provide all the same
 functionality while being even higher performance. :dizzy:
 
+[![Hex.pm](https://img.shields.io/hexpm/v/exmoji.svg)](https://hex.pm/packages/exmoji)
 [![Build Status](https://travis-ci.org/mroth/exmoji.svg?branch=master)](https://travis-ci.org/mroth/exmoji)
 
 [doublebyte]: http://www.quora.com/Why-does-using-emoji-reduce-my-SMS-character-limit-to-70
