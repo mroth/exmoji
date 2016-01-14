@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2 (13 January 2016)
+
+ * Updates related to compiling cleanly on most recent versions of Elixir (1.2),
+   thanks to @jeffweiss.
+
 ## 0.2.1 (8 September 2014)
 
  * Update dependencies for Elixir 1.0 release.
