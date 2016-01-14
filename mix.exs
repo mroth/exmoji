@@ -24,7 +24,7 @@ defmodule Exmoji.Mixfile do
 
   defp package do
     [
-      contributors: [ "Matthew Rothenberg <mroth@mroth.info>" ],
+      maintainers:  [ "Matthew Rothenberg <mroth@mroth.info>" ],
       licenses:     [ "MIT" ],
       links:        %{
                        "Docs"   => "https://mroth.github.io/exmoji/",
