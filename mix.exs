@@ -68,10 +68,10 @@ defmodule Exmoji.Mixfile do
   defp release_docs(_) do
     additional_files = ["README.md"]
     Mix.Task.run "clean.docs"
-    :os.cmd 'git clone --branch gh-pages `git config --get remote.origin.url` docs'
+    :os.cmd 'git clone --branch gh-pages `git config --get remote.origin.url` doc'
     Mix.Task.run "docs"
-    Enum.each(additional_files, &File.cp!(&1, Path.join("docs", &1)))
-    File.cd! "docs", fn ->
+    Enum.each(additional_files, &File.cp!(&1, Path.join("doc", &1)))
+    File.cd! "doc", fn ->
       :os.cmd 'git add -A .'
       :os.cmd 'git commit -m "Updated docs"'
       :os.cmd 'git push origin gh-pages'
