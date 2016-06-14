@@ -107,7 +107,7 @@ defmodule Exmoji do
   """
   def find_by_name(name) do
     name = String.upcase(name)
-    Enum.filter( @emoji_chars, &(String.contains?(&1.name, name)) )
+    Enum.filter( @emoji_chars, &(is_binary(&1.name) && String.contains?(&1.name, name)) )
   end
 
 
