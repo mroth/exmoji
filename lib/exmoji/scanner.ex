@@ -34,7 +34,10 @@ defmodule Exmoji.Scanner do
   #       new algorithm produces identical results.
   #
   # Thus it is kept as public so we can compare it in test...
-  fbs_pattern = Exmoji.chars(include_variants: true) |> Enum.join("|")
+  fbs_pattern =
+    Exmoji.chars(include_variants: true)
+    |> Enum.map(fn emoji_char -> Regex.escape(emoji_char) end)
+    |> Enum.join("|")
   @fbs_regexp Regex.compile!( "(?:#{fbs_pattern})" )
   @doc false
   def rscan(str) do
