@@ -156,7 +156,7 @@ defmodule ExmojiTest do
   end
 
   test ".char_to_unified - converts variant encoded emoji to variant unified codepoint" do
-    assert Exmoji.char_to_unified("\x{2601}\x{FE0F}") == "2601-FE0F"
+    assert Exmoji.char_to_unified("\u{2601}\u{FE0F}") == "2601-FE0F"
   end
 
 
@@ -174,11 +174,11 @@ defmodule ExmojiTest do
   end
 
   test ".unified_to_char - converts variant unified codepoints to unicode strings" do
-    assert Exmoji.unified_to_char("2764-fe0f") == "\x{2764}\x{FE0F}"
+    assert Exmoji.unified_to_char("2764-fe0f") == "\u{2764}\u{FE0F}"
   end
 
   test ".unified_to_char - converts variant+doublebyte chars (triplets!) to unicode strings" do
-    assert Exmoji.unified_to_char("0030-FE0F-20E3") == "\x{0030}\x{FE0F}\x{20E3}"
+    assert Exmoji.unified_to_char("0030-FE0F-20E3") == "\u{0030}\u{FE0F}\u{20E3}"
   end
 
 end

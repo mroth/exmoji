@@ -183,7 +183,7 @@ defmodule Exmoji do
       iex> Exmoji.char_to_unified("👾")
       "1F47E"
 
-      iex> Exmoji.char_to_unified("\x{23}\x{fe0f}\x{20e3}")
+      iex> Exmoji.char_to_unified("\x23\u{fe0f}\u{20e3}")
       "0023-FE0F-20E3"
 
   """
