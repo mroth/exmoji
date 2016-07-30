@@ -20,7 +20,7 @@ defmodule Exmoji.Scanner do
   """
   def scan(str) do
     bscan(str)
-    |> Enum.map(&Exmoji.char_to_unified/1)
+    |> Enum.map(&Exmoji.Util.char_to_unified/1)
     |> Enum.map(&Exmoji.from_unified/1)
   end
 
