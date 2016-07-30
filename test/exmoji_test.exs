@@ -6,9 +6,9 @@ defmodule ExmojiTest do
   # Define a number of known Emoji library characteristics.
   # We should expect to get this many from our data file.
   # This may be manually updated in the future as Emoji evolves.
-  @known_chars      845
-  @known_doublebyte 21
-  @known_variants   107
+  @known_chars      1300
+  @known_doublebyte 287
+  @known_variants   134
 
 
   #
@@ -56,7 +56,7 @@ defmodule ExmojiTest do
     results = Exmoji.codepoints()
     assert Enum.count(results) == @known_chars
     for r <- results do
-      assert String.match? r, ~r/^[0-9A-F\-]{4,11}$/
+      assert String.match? r, ~r/^[0-9A-F\-]{4,42}$/
     end
   end
 
@@ -64,7 +64,7 @@ defmodule ExmojiTest do
     results = Exmoji.codepoints(include_variants: true)
     assert Enum.count(results) == @known_chars + @known_variants
     for r <- results do
-      assert String.match? r, ~r/^[0-9A-F\-]{4,16}$/
+      assert String.match? r, ~r/^[0-9A-F\-]{4,42}$/
     end
   end
 
@@ -136,7 +136,7 @@ defmodule ExmojiTest do
   end
 
   test ".from_short_name - returns nil if nothing matches" do
-    assert Exmoji.from_short_name("taco") == nil
+    assert Exmoji.from_short_name("nacho") == nil
   end
 
 
