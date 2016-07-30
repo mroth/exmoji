@@ -6,13 +6,15 @@ otp_release:
   - 17.5
 
 elixir:
+  - 1.3.0
   - 1.2.0
   - 1.1.1
-  - 1.0.5
 
 matrix:
   exclude:
     - elixir: 1.2.0
+      otp_release: 17.5
+    - elixir: 1.3.0
       otp_release: 17.5
 
 env:
