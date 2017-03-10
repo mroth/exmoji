@@ -6,13 +6,13 @@ defmodule Exmoji.Mixfile do
       app:           :exmoji,
       version:       "0.2.2",
       elixir:        "~> 1.1",
-      deps:          deps,
+      deps:          deps(),
       test_coverage: [tool: ExCoveralls],
       name:          "Exmoji",
       source_url:    "https://github.com/mroth/exmoji",
-      description:   description,
-      package:       package,
-      aliases:       aliases
+      description:   description(),
+      package:       package(),
+      aliases:       aliases()
     ]
   end
 
