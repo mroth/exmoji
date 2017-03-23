@@ -44,12 +44,12 @@ defmodule Exmoji.EmojiChar do
   """
   def render(ec, options \\ [variant_encoding: true])
   def render(ec, variant_encoding: false) do
-    Exmoji.unified_to_char(ec.unified)
+    Exmoji.Util.unified_to_char(ec.unified)
   end
   def render(ec, variant_encoding: true) do
     case variant?(ec) do
-      true  -> Exmoji.unified_to_char( variant(ec) )
-      false -> Exmoji.unified_to_char( ec.unified )
+      true  -> Exmoji.Util.unified_to_char( variant(ec) )
+      false -> Exmoji.Util.unified_to_char( ec.unified )
     end
   end
 
@@ -66,7 +66,7 @@ defmodule Exmoji.EmojiChar do
   """
   def chars(%EmojiChar{}=emojichar) do
     codepoint_ids(emojichar)
-    |> Enum.map(&Exmoji.unified_to_char/1)
+    |> Enum.map(&Exmoji.Util.unified_to_char/1)
   end
 
   @doc """

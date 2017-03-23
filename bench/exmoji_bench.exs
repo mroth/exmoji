@@ -14,11 +14,11 @@ defmodule ExmojiBench do
   bench "find_by_short_name - many", do: Exmoji.find_by_short_name("MOON")
   bench "find_by_short_name - none", do: Exmoji.find_by_short_name("zzzz")
 
-  bench "char_to_unified - single", do: Exmoji.char_to_unified("🚀")
-  bench "char_to_unified - double", do: Exmoji.char_to_unified("\x{2601}\x{FE0F}")
+  bench "char_to_unified - single", do: Exmoji.Util.char_to_unified("🚀")
+  bench "char_to_unified - double", do: Exmoji.Util.char_to_unified("\x{2601}\x{FE0F}")
 
-  bench "unified_to_char - single", do: Exmoji.unified_to_char("1F47E")
-  bench "unified_to_char - double", do: Exmoji.unified_to_char("2764-fe0f")
-  bench "unified_to_char - triple", do: Exmoji.unified_to_char("0030-FE0F-20E3")
+  bench "unified_to_char - single", do: Exmoji.Util.unified_to_char("1F47E")
+  bench "unified_to_char - double", do: Exmoji.Util.unified_to_char("2764-fe0f")
+  bench "unified_to_char - triple", do: Exmoji.Util.unified_to_char("0030-FE0F-20E3")
 
 end
