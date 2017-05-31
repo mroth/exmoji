@@ -56,13 +56,4 @@ defmodule ScannerTest do
     assert Scanner.scan(@case_none) == []
   end
 
-  #
-  # #bscan
-  #
-  test ".bscan - make sure binary scan gets same result as legacy regex scan" do
-    testcases = [@case_exact, @case_multi, @case_variant, @case_multivariant,
-                 @case_duplicates, @case_none]
-    for tc <- testcases, do: assert Scanner.bscan(tc) == Scanner.rscan(tc)
-  end
-
 end

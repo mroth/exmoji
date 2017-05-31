@@ -42,6 +42,18 @@ defp deps do
 end
 ```
 
+Configuration
+--------------
+
+Exmoji includes a vendored JSON file of all emoji from https://github.com/iamcal/emoji-data.
+You may optionally supply your own JSON file through your application's `config.exs`:
+
+```elixir
+config :exmoji, :data, Path.expand("priv/emoji-data/emoji.json")
+```
+
+At the bare minimum, this file should be an array of objects that include the
+`name`, `unified`, `variations`, `short_name`, `short_names`, and `text` fields.
 
 Modules
 -------
