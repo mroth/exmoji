@@ -22,14 +22,12 @@ defmodule Exmoji.EmojiChar do
   It also contains a few helper functions to deal with this data type.
   """
 
-  defstruct [
-    name: nil,
-    unified: nil,
-    variations: [],
-    short_name: nil,
-    short_names: [],
-    text: nil
-  ]
+  defstruct name: nil,
+            unified: nil,
+            variations: [],
+            short_name: nil,
+            short_names: [],
+            text: nil
 
   alias Exmoji.EmojiChar
 
@@ -43,13 +41,15 @@ defmodule Exmoji.EmojiChar do
   Emoji characters that contain a possible variant.
   """
   def render(ec, options \\ [variant_encoding: true])
+
   def render(ec, variant_encoding: false) do
     Exmoji.unified_to_char(ec.unified)
   end
+
   def render(ec, variant_encoding: true) do
     case variant?(ec) do
-      true  -> Exmoji.unified_to_char( variant(ec) )
-      false -> Exmoji.unified_to_char( ec.unified )
+      true -> Exmoji.unified_to_char(variant(ec))
+      false -> Exmoji.unified_to_char(ec.unified)
     end
   end
 
@@ -64,7 +64,7 @@ defmodule Exmoji.EmojiChar do
   all possible values to match against when searching for the emoji in a string
   representation.
   """
-  def chars(%EmojiChar{}=emojichar) do
+  def chars(%EmojiChar{} = emojichar) do
     codepoint_ids(emojichar)
     |> Enum.map(&Exmoji.unified_to_char/1)
   end
@@ -81,6 +81,10 @@ defmodule Exmoji.EmojiChar do
       ["2601","2601-FE0F"]
 
   """
+  def codepoint_ids(%EmojiChar{unified: uid, variations: nil}) do
+    [uid]
+  end
+
   def codepoint_ids(%EmojiChar{unified: uid, variations: variations}) do
     [uid] ++ variations
   end
@@ -95,6 +99,8 @@ defmodule Exmoji.EmojiChar do
   @doc """
   Does the `EmojiChar` have an alternate Unicode variant encoding?
   """
+  def variant?(%EmojiChar{variations: nil}), do: false
+
   def variant?(%EmojiChar{variations: variations}) do
     length(variations) > 0
   end
@@ -114,7 +120,6 @@ defmodule Exmoji.EmojiChar do
   If there is no variant-encoding for a character, returns nil.
   """
   def variant(%EmojiChar{variations: variations}) do
-    List.first variations
+    List.first(variations)
   end
-
 end
