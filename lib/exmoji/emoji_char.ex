@@ -8,7 +8,7 @@ defmodule Exmoji.EmojiChar do
   * `name` - The standardized name used in the Unicode specification to
     represent this emoji character.
   * `unified` - The primary unified codepoint ID for the emoji.
-  * `variations` - A list of all variant codepoints that may also represent this
+  * `non_qualified` - A variant codepoint that may also represent this
     emoji.
   * `short_name` - The canonical "short name" or keyword used in many systems to
     refer to this emoji. Often surrounded by `:colons:` in systems like GitHub
@@ -25,7 +25,7 @@ defmodule Exmoji.EmojiChar do
   defstruct [
     name: nil,
     unified: nil,
-    variations: [],
+    non_qualified: nil,
     short_name: nil,
     short_names: [],
     text: nil
@@ -42,7 +42,7 @@ defmodule Exmoji.EmojiChar do
   that "graphic" representation should be used. By default, we use this for all
   Emoji characters that contain a possible variant.
   """
-  def render(ec, options \\ [variant_encoding: true])
+  def render(ec, options \\ [variant_encoding: false])
   def render(ec, variant_encoding: false) do
     Exmoji.unified_to_char(ec.unified)
   end
@@ -81,8 +81,12 @@ defmodule Exmoji.EmojiChar do
       ["2601","2601-FE0F"]
 
   """
-  def codepoint_ids(%EmojiChar{unified: uid, variations: variations}) do
-    [uid] ++ variations
+  def codepoint_ids(%EmojiChar{unified: uid, non_qualified: non_qualified}) do
+    if non_qualified do
+      [uid, non_qualified]
+    else
+      [uid]
+    end
   end
 
   @doc """
@@ -95,8 +99,8 @@ defmodule Exmoji.EmojiChar do
   @doc """
   Does the `EmojiChar` have an alternate Unicode variant encoding?
   """
-  def variant?(%EmojiChar{variations: variations}) do
-    length(variations) > 0
+  def variant?(%EmojiChar{non_qualified: non_qualified}) do
+    !is_nil(non_qualified)
   end
 
   @doc """
@@ -113,8 +117,8 @@ defmodule Exmoji.EmojiChar do
 
   If there is no variant-encoding for a character, returns nil.
   """
-  def variant(%EmojiChar{variations: variations}) do
-    List.first variations
+  def variant(%EmojiChar{non_qualified: non_qualified}) do
+    non_qualified
   end
 
 end

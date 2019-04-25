@@ -5,9 +5,9 @@ defmodule ExmojiTest do
   # Define a number of known Emoji library characteristics.
   # We should expect to get this many from our data file.
   # This may be manually updated in the future as Emoji evolves.
-  @known_chars      1300
-  @known_doublebyte 287
-  @known_variants   134
+  @known_chars      1568
+  @known_doublebyte 628
+  @known_variants   307
 
 
   #

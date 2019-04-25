@@ -13,9 +13,9 @@ defmodule Exmoji.Scanner do
 
       iex> Exmoji.Scanner.scan("flying on my 🚀 to visit the 👾 people.")
       [%Exmoji.EmojiChar{name: "ROCKET", short_name: "rocket",
-        short_names: ["rocket"], text: nil, unified: "1F680", variations: []},
+        short_names: ["rocket"], text: nil, unified: "1F680", non_qualified: nil},
        %Exmoji.EmojiChar{name: "ALIEN MONSTER", short_name: "space_invader",
-        short_names: ["space_invader"], text: nil, unified: "1F47E", variations: []}]
+        short_names: ["space_invader"], text: nil, unified: "1F47E", non_qualified: nil}]
 
   """
   def scan(str) do

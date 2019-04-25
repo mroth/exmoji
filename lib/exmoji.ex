@@ -23,12 +23,12 @@ defmodule Exmoji do
   rawdata = Jason.decode! rawfile, keys: :atoms
   emoji_chars = for char <- rawdata do
     %EmojiChar{
-      name:         char.name,
-      unified:      char.unified,
-      variations:   char.variations,
-      short_name:   char.short_name,
-      short_names:  char.short_names,
-      text:         char.text
+      name:           char.name,
+      unified:        char.unified,
+      non_qualified:  char.non_qualified,
+      short_name:     char.short_name,
+      short_names:    char.short_names,
+      text:           char.text
     }
   end
   @emoji_chars emoji_chars
@@ -98,7 +98,7 @@ defmodule Exmoji do
 
       iex> Exmoji.find_by_name "father"
       [%Exmoji.EmojiChar{name: "FATHER CHRISTMAS", short_name: "santa",
-      short_names: ["santa"], text: nil, unified: "1F385", variations: []}]
+      short_names: ["santa"], text: nil, unified: "1F385", non_qualified: nil}]
 
       iex> for t <- Exmoji.find_by_name("tree"), do: t.name
       ["EVERGREEN TREE", "DECIDUOUS TREE", "PALM TREE", "CHRISTMAS TREE",
