@@ -20,7 +20,7 @@ defmodule Exmoji do
   @external_resource vendor_data_file
 
   rawfile = File.read! vendor_data_file
-  rawdata = Poison.decode! rawfile, keys: :atoms
+  rawdata = Jason.decode! rawfile, keys: :atoms
   emoji_chars = for char <- rawdata do
     %EmojiChar{
       name:         char.name,
@@ -197,7 +197,7 @@ defmodule Exmoji do
   # produce a string representation of the integer value of a codepoint, in hex
   # this should be zero-padded to a minimum of 4 digits
   defp padded_hex_string(<< cp_int_value :: utf8 >>) do
-    cp_int_value |> Integer.to_string(16) |> String.rjust(4,?0)
+    cp_int_value |> Integer.to_string(16) |> String.pad_leading(4, "0")
   end
 
 
