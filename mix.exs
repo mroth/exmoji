@@ -5,7 +5,7 @@ defmodule Exmoji.Mixfile do
     [
       app:           :exmoji,
       version:       "0.3.0",
-      elixir:        "~> 1.4",
+      elixir:        "~> 1.0",
       deps:          deps(),
       test_coverage: [tool: ExCoveralls],
       name:          "Exmoji",
@@ -45,11 +45,11 @@ defmodule Exmoji.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:jason,        "~> 1.2"},
-      {:excoveralls,  "~> 0.6",                 only: :dev},
-      {:benchfella,   "~> 0.3",                 only: :dev},
-      {:earmark,      "~> 1.1",                 only: :dev},
-      {:ex_doc,       "~> 0.14",                only: :dev}
+      {:poison,       "~> 1.5"},
+      {:excoveralls,  "~> 0.4.5",                 only: :dev},
+      {:benchfella,   "~> 0.3.1",                 only: :dev},
+      {:earmark,      "~> 0.2.0",                 only: :dev},
+      {:ex_doc,       "~> 0.11.3",                only: :dev}
     ]
   end
 

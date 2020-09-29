@@ -4,9 +4,9 @@ defmodule ScannerTest do
   alias Exmoji.Scanner
 
   @case_exact         "🚀"
-  @case_multi         "\u{0023}\u{FE0F}\u{20E3}"
+  @case_multi         "\x{0023}\x{FE0F}\x{20E3}"
   @case_variant       "flying on my 🚀 to visit the 👾 people."
-  @case_multivariant  "first a \u{0023}\u{FE0F}\u{20E3} then a 🚀"
+  @case_multivariant  "first a \x{0023}\x{FE0F}\x{20E3} then a 🚀"
   @case_duplicates    "flying my 🚀 to visit the 👾 people who have their own 🚀 omg!"
   @case_none          "i like turtles"
 

@@ -1,0 +1,139 @@
+// name:         char.name,
+// unified:      char.unified,
+// variations:   char.variations,
+// short_name:   char.short_name,
+// short_names:  char.short_names,
+// text:         char.text
+
+// Emojione 2.0
+{
+  "grinning":
+  {
+    "unicode":"1f600",
+    "unicode_alt":"",
+    "code_decimal":"&#128512;",
+    "name":"grinning face",
+    "shortname":":grinning:",
+    "category":"people",
+    "emoji_order":"1",
+    "aliases":[],
+    "aliases_ascii":[],
+    "keywords":["happy","smiley","emotion"]
+  },
+  "grin":
+  {
+    "unicode":"1f601",
+    "unicode_alt":"",
+    "code_decimal":"&#128513;",
+    "name":"grinning face with smiling eyes",
+    "shortname":":grin:",
+    "category":"people",
+    "emoji_order":"2",
+    "aliases":[],
+    "aliases_ascii":[],
+    "keywords":["happy","silly","smiley","emotion","good","selfie"]
+  }
+}
+
+// Emojione 3.1.1
+{
+  "1f600": {
+    "name":"grinning face",
+    "unicode_version":6.1,
+    "category":"people",
+    "order":1,
+    "display":1,
+    "shortname":":grinning:",
+    "shortname_alternates":[],
+    "ascii":[],
+    "diversity":null,
+    "diversities":[],
+    "gender":null,
+    "genders":[],
+    "code_points":{
+      "base":"1f600",
+      "fully_qualified":"1f600",
+      "non_fully_qualified":"1f600",
+      "output":"1f600",
+      "default_matches":["1f600"],
+      "greedy_matches":["1f600"],
+      "decimal":""
+    },
+    "keywords":["face","grin"]
+  },
+  "0034":{
+    "name":"digit four",
+    "unicode_version":1.1,
+    "category":"symbols",
+    "order":2503,
+    "display":0,
+    "shortname":":digit_four:",
+    "shortname_alternates":[],
+    "ascii":[],
+    "diversity":null,
+    "diversities":[],
+    "gender":null,
+    "genders":[],
+    "code_points":{
+      "base":"0034",
+      "fully_qualified": "0034-fe0f",
+      "non_fully_qualified":"0034",
+      "output":"0034-fe0f",
+      "default_matches":["0034-fe0f","0034"],
+      "greedy_matches":["0034-fe0f","0034"],
+      "decimal":""
+    },
+    "keywords":[""]
+  },
+  "0034-20e3":{
+    "name":"keycap: 4",
+    "unicode_version":3,
+    "category":"symbols",
+    "order":2068,
+    "display":1,
+    "shortname":":four:",
+    "shortname_alternates":[],
+    "ascii":[],
+    "diversity":null,
+    "diversities":[],
+    "gender":null,
+    "genders":[],
+    "code_points":{
+      "base":"0034-20e3",
+      "fully_qualified":"0034-fe0f-20e3",
+      "non_fully_qualified":"0034-20e3",
+      "output":"0034-fe0f-20e3",
+      "default_matches":["0034-fe0f-20e3","0034-20e3"],
+      "greedy_matches":["0034-fe0f-20e3","0034-20e3"],
+      "decimal":""
+    },
+    "keywords":["keycap"]
+  }
+}
+
+
+// Exmoji original
+{
+  "name":"GRINNING FACE",
+  "unified":"1F600",
+  "variations":[],
+  "docomo":null,
+  "au":null,
+  "softbank":null,
+  "google":null,
+  "image":"1f600.png",
+  "sheet_x":26,
+  "sheet_y":15,
+  "short_name":"grinning",
+  "short_names":["grinning"],
+  "text":":D",
+  "texts":null,
+  "category":"People",
+  "sort_order":1,
+  "has_img_apple":true,
+  "has_img_google":true,
+  "has_img_twitter":true,
+  "has_img_emojione":true,
+  "has_img_facebook":false,
+  "has_img_messenger":true
+}

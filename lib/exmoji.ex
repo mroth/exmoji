@@ -16,23 +16,29 @@ defmodule Exmoji do
   #
   # Read and parse the Emoji library from our vendored data file.
   #
-  vendor_data_file = "lib/vendor/emoji-data/emoji.json"
+  vendor_data_file = "lib/vendor/emoji-data/emoji_strategy.json"
   @external_resource vendor_data_file
 
   rawfile = File.read! vendor_data_file
-  rawdata = Jason.decode! rawfile, keys: :atoms
+  rawdata = Poison.decode! rawfile
   emoji_chars = for char <- rawdata do
+    {unicode, char} = char
+
     %EmojiChar{
-      name:         char.name,
-      unified:      char.unified,
-      variations:   char.variations,
-      short_name:   char.short_name,
-      short_names:  char.short_names,
-      text:         char.text
+      name:         char["name"],
+      unified:      unicode,
+      variations:   if char["unicode_output"] != nil && char["unicode_output"] != unicode do [ char["unicode_output"] ] else [] end,
+      short_name:   String.trim(char["shortname"], ":"),
+      short_names:  char["shortname_alternates"]
+      |> Enum.map( fn(alias) -> String.trim(alias, ":") end )
+      |> Enum.concat( [String.trim(char["shortname"], ":")] )
+      |> Enum.uniq
+      |> Enum.to_list,
+      text:         if char["ascii"] != nil do char["ascii"] else [] end
     }
   end
-  @emoji_chars emoji_chars
 
+  @emoji_chars emoji_chars
 
   @doc """
   Returns a list of all #{Enum.count @emoji_chars} Emoji characters as `EmojiChar`.
@@ -107,7 +113,7 @@ defmodule Exmoji do
   """
   def find_by_name(name) do
     name = String.upcase(name)
-    Enum.filter( @emoji_chars, &(String.contains?(&1.name, name)) )
+    Enum.filter( @emoji_chars, &(is_binary(&1.name) && String.contains?(&1.name, name)) )
   end
 
 
@@ -146,11 +152,13 @@ defmodule Exmoji do
   Finds a specific `EmojiChar` based on the unified codepoint ID.
   """
   def from_unified(uid) do
-    uid |> String.upcase |> _from_unified
+    uid |> String.downcase |> _from_unified
   end
 
   for ec <- @emoji_chars, cp <- EmojiChar.codepoint_ids(ec) do
-    defp _from_unified( unquote(cp) ), do: unquote(Macro.escape(ec))
+    # IO.inspect cp
+    # IO.inspect ec
+    defp _from_unified( unquote(String.downcase(cp)) ), do: unquote(Macro.escape(ec))
   end
   defp _from_unified(_), do: nil
 
@@ -183,7 +191,7 @@ defmodule Exmoji do
       iex> Exmoji.char_to_unified("👾")
       "1F47E"
 
-      iex> Exmoji.char_to_unified("\x23\u{fe0f}\u{20e3}")
+      iex> Exmoji.char_to_unified("\u0023\ufe0f\u20e3")
       "0023-FE0F-20E3"
 
   """
@@ -199,6 +207,4 @@ defmodule Exmoji do
   defp padded_hex_string(<< cp_int_value :: utf8 >>) do
     cp_int_value |> Integer.to_string(16) |> String.pad_leading(4, "0")
   end
-
-
 end
