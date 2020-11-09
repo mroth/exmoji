@@ -57,7 +57,7 @@ Some examples:
 ```iex
 iex> Exmoji.from_unified "0023-20E3"
 %Exmoji.EmojiChar{name: "HASH KEY", short_name: "hash", short_names: ["hash"],
- text: nil, unified: "0023-20E3", variations: ["0023-FE0F-20E3"]}
+ text: nil, unified: "0023-FE0F-20E3", non_qualified:"0023-20E3"}
 
 iex> Exmoji.all |> Enum.count
 845

@@ -37,7 +37,9 @@ defmodule Exmoji.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: []]
+    [
+      extra_applications: []
+    ]
   end
 
   # Dependencies

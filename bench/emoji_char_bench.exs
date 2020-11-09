@@ -5,8 +5,8 @@ defmodule EmojiCharBench do
 
   @invader   %EmojiChar{unified: "1F47E"}
   @usflag    %EmojiChar{unified: "1F1FA-1F1F8"}
-  @hourglass %EmojiChar{unified: "231B", variations: ["231B-FE0F"]}
-  @cloud     %EmojiChar{unified: "2601", variations: ["2601-FE0F"]}
+  @hourglass %EmojiChar{unified: "231B-FE0F", non_qualified: "231B"}
+  @cloud     %EmojiChar{unified: "2601-FE0F", non_qualified: "2601"}
 
   bench "render - single",  do: EmojiChar.render(@invader)
   bench "render - double",  do: EmojiChar.render(@usflag)
