@@ -1,7 +1,7 @@
 defmodule ScannerBench do
   use Benchfella
 
-  @s0 "I liek to eat cake oh so very much cake eating is nice!! #cake #food"
+  @s0 "I like to eat cake oh so very much cake eating is nice!! #cake #food"
   @s1 "🚀"
   @s2 "flying on my 🚀 to visit the 👾 people."
   @s3 "first a \u0023\uFE0F\u20E3 then a 🚀"

@@ -1,67 +1,70 @@
 defmodule Exmoji.Mixfile do
   use Mix.Project
 
+  @source_url "https://github.com/mroth/exmoji"
+  @version "0.3.0"
+
   def project do
     [
-      app:           :exmoji,
-      version:       "0.3.0",
-      elixir:        "~> 1.4",
-      deps:          deps(),
+      app: :exmoji,
+      version: @version,
+      elixir: "~> 1.4",
       test_coverage: [tool: ExCoveralls],
-      name:          "Exmoji",
-      source_url:    "https://github.com/mroth/exmoji",
-      description:   description(),
-      package:       package(),
-      aliases:       aliases()
+      name: "Exmoji",
+      deps: deps(),
+      docs: docs(),
+      package: package(),
+      aliases: aliases()
     ]
-  end
-
-  defp description do
-    """
-    Emoji encoding swiss army knife for dealing with Unicode and other gotchas.
-    """
   end
 
   defp package do
     [
-      maintainers:  [ "Matthew Rothenberg <mroth@mroth.info>" ],
-      licenses:     [ "MIT" ],
-      links:        %{
-                       "Docs"   => "https://hexdocs.pm/exmoji/",
-                       "GitHub" => "https://github.com/mroth/exmoji"
-                    }
+      description: "Emoji encoding swiss army knife for dealing with Unicode "
+        <> "and other gotchas.",
+      maintainers: ["Matthew Rothenberg <mroth@mroth.info>"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => @source_url
+      }
     ]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type `mix help compile.app` for more information
   def application do
     [applications: []]
   end
 
-  # Dependencies
-  #
-  # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:jason,        "~> 1.2"},
-      {:excoveralls,  "~> 0.6",                 only: :dev},
-      {:benchfella,   "~> 0.3",                 only: :dev},
-      {:earmark,      "~> 1.1",                 only: :dev},
-      {:ex_doc,       "~> 0.14",                only: :dev}
+      {:jason, "~> 1.2"},
+      {:excoveralls, "~> 0.6", only: :dev},
+      {:benchfella, "~> 0.3", only: :dev},
+      {:earmark, "~> 1.1", only: :dev},
+      {:ex_doc, ">= 0.0.0", only: :dev}
+    ]
+  end
+
+  defp docs do
+    [
+      extras: [
+        "LICENSE.md": [title: "License"],
+        "README.md": [title: "Overview"]
+      ],
+      main: "readme",
+      source_url: @source_url,
+      source_ref: "v#{@version}",
+      formatters: ["html"]
     ]
   end
 
   defp aliases do
     [
-      clean:          ["clean", &clean_docs/1, &clean_benchmarks/1],
-      "clean.docs":   [&clean_docs/1],
-      "clean.bench":  [&clean_benchmarks/1]
+      clean: ["clean", &clean_docs/1, &clean_benchmarks/1],
+      "clean.docs": [&clean_docs/1],
+      "clean.bench": [&clean_benchmarks/1]
     ]
   end
 
   defp clean_benchmarks(_), do: File.rm_rf!("bench/snapshots")
   defp clean_docs(_), do: File.rm_rf!("doc")
-
 end

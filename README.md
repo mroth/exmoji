@@ -1,5 +1,13 @@
 Exmoji
 ======
+
+[![Build Status](https://travis-ci.org/mroth/exmoji.svg?branch=master)](https://travis-ci.org/mroth/exmoji)
+[![Module Version](https://img.shields.io/hexpm/v/exmoji.svg)](https://hex.pm/packages/exmoji)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/exmoji/)
+[![Total Download](https://img.shields.io/hexpm/dt/exmoji.svg)](https://hex.pm/packages/exmoji)
+[![License](https://img.shields.io/hexpm/l/exmoji.svg)](https://github.com/mroth/exmoji/blob/master/LICENSE.md)
+[![Last Updated](https://img.shields.io/github/last-commit/mroth/exmoji.svg)](https://github.com/mroth/exmoji/commits/master)
+
 An Elixir/Erlang library providing low level operations for dealing with Emoji
 glyphs in the Unicode standard. :cool:
 
@@ -15,9 +23,6 @@ is used in production by [Emojitracker.com][emojitracker] to parse well over
 100M+ emoji glyphs daily. This version was written to provide all the same
 functionality while being even higher performance. :dizzy:
 
-[![Hex.pm](https://img.shields.io/hexpm/v/exmoji.svg)](https://hex.pm/packages/exmoji)
-[![Build Status](https://travis-ci.org/mroth/exmoji.svg?branch=master)](https://travis-ci.org/mroth/exmoji)
-
 [doublebyte]: http://www.quora.com/Why-does-using-emoji-reduce-my-SMS-character-limit-to-70
 [variant]: http://www.unicode.org/L2/L2011/11438-emoji-var.pdf
 [rb]: https://github.com/mroth/emoji_data.rb
@@ -26,11 +31,13 @@ functionality while being even higher performance. :dizzy:
 Installation
 ------------
 
-Add it to your deps list in your `mix.exs`.
+Add it to your deps list in your `mix.exs`:
 
 ```elixir
 defp deps do
-  [{:exmoji, "~> 0.2.2"}]
+  [
+    {:exmoji, "~> 0.3.0"}
+  ]
 end
 ```
 
@@ -38,7 +45,9 @@ To get the development version, you can pull directly from GitHub:
 
 ```elixir
 defp deps do
-  [{:exmoji, github: "mroth/exmoji"}]
+  [
+    {:exmoji, github: "mroth/exmoji"}
+  ]
 end
 ```
 
@@ -50,11 +59,12 @@ https://mroth.github.io/exmoji/
 
 
 #### Exmoji
+
 The main library, with detailed search and conversion functions.
 
 Some examples:
 
-```iex
+```elixir
 iex> Exmoji.from_unified "0023-20E3"
 %Exmoji.EmojiChar{name: "HASH KEY", short_name: "hash", short_names: ["hash"],
  text: nil, unified: "0023-20E3", variations: ["0023-FE0F-20E3"]}
@@ -74,6 +84,7 @@ iex> for t <- Exmoji.find_by_name("tree"), do: t.name
 ```
 
 #### Exmoji.EmojiChar
+
 A struct representation of a single Emoji character and all of its
 associated metadata.
 
@@ -83,7 +94,7 @@ representation of an Emoji character suitable for transmission.  It understands
 which Emoji have variant encodings and will do the right thing to make sure they
 are likely to display correctly on the other end.
 
-```iex
+```elixir
 iex> alias Exmoji.EmojiChar
 nil
 
@@ -97,14 +108,15 @@ iex> for m <- Exmoji.find_by_short_name("moon"), do: EmojiChar.render(m)
 ```
 
 #### Exmoji.Scanner
+
 Provides very fast searches against binary strings for the presence of UTF-8
 encoded Emoji glyphs.  Whereas the Ruby and NodeJS versions of this library
-accomplish this via regular expressions, the Elixir version relies on optmized
+accomplish this via regular expressions, the Elixir version relies on optimized
 binary pattern matching, making it faster.
 
 An example:
 
-```iex
+```elixir
 iex> for ec <- Exmoji.Scanner.scan("I ♥ when marketers talk about the ☁.") do
 ...>   IO.puts "Found some #{ec.short_name}!"
 ...> end
@@ -125,6 +137,9 @@ There is a full benchmark suite available via `mix bench`.  Please
 run before and after your changes to ensure you have not caused a performance
 regression.
 
-## License
+## Copyright and License
 
-[The MIT License (MIT)](LICENSE)
+Copyright (c) 2014 Matthew Rothenberg
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the MIT License. See the [LICENSE.md](./LICENSE.md) file for more details.
