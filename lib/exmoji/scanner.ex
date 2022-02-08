@@ -13,9 +13,9 @@ defmodule Exmoji.Scanner do
 
       iex> Exmoji.Scanner.scan("flying on my 🚀 to visit the 👾 people.")
       [%Exmoji.EmojiChar{name: "ROCKET", short_name: "rocket",
-        short_names: ["rocket"], text: nil, unified: "1F680", variations: []},
+        short_names: ["rocket"], text: nil, unified: "1F680", non_qualified: nil},
        %Exmoji.EmojiChar{name: "ALIEN MONSTER", short_name: "space_invader",
-        short_names: ["space_invader"], text: nil, unified: "1F47E", variations: []}]
+        short_names: ["space_invader"], text: nil, unified: "1F47E", non_qualified: nil}]
 
   """
   def scan(str) do
@@ -34,7 +34,10 @@ defmodule Exmoji.Scanner do
   #       new algorithm produces identical results.
   #
   # Thus it is kept as public so we can compare it in test...
-  fbs_pattern = Exmoji.chars(include_variants: true) |> Enum.join("|")
+  fbs_pattern =
+    Exmoji.chars(include_variants: true)
+    |> Enum.map(fn emoji_char -> Regex.escape(emoji_char) end)
+    |> Enum.join("|")
   @fbs_regexp Regex.compile!( "(?:#{fbs_pattern})" )
   @doc false
   def rscan(str) do
