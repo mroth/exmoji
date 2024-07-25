@@ -36,7 +36,7 @@ defmodule Exmoji.Mixfile do
 
   defp deps do
     [
-      {:jason, "~> 1.2"},
+      {:jason, "~> 1.4"},
       {:excoveralls, "~> 0.6", only: :dev},
       {:benchfella, "~> 0.3", only: :dev},
       {:earmark, "~> 1.1", only: :dev},
