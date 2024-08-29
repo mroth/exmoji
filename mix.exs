@@ -8,7 +8,7 @@ defmodule Exmoji.Mixfile do
     [
       app: :exmoji,
       version: @version,
-      elixir: "~> 1.4",
+      elixir: "~> 1.14",
       test_coverage: [tool: ExCoveralls],
       name: "Exmoji",
       deps: deps(),
@@ -20,8 +20,9 @@ defmodule Exmoji.Mixfile do
 
   defp package do
     [
-      description: "Emoji encoding swiss army knife for dealing with Unicode "
-        <> "and other gotchas.",
+      description:
+        "Emoji encoding swiss army knife for dealing with Unicode " <>
+          "and other gotchas.",
       maintainers: ["Matthew Rothenberg <mroth@mroth.info>"],
       licenses: ["MIT"],
       links: %{

@@ -11,9 +11,10 @@ defmodule Exmoji do
   this library may be your new best friend.
   """
 
-  require Jason
+  Application.ensure_loaded(:jason)
 
   alias Exmoji.EmojiChar
+  alias Jason
 
   #
   # Read and parse the Emoji library from our vendored data file.
