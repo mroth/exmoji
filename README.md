@@ -1,7 +1,6 @@
 Exmoji
 ======
 
-[![Build Status](https://travis-ci.org/mroth/exmoji.svg?branch=master)](https://travis-ci.org/mroth/exmoji)
 [![Module Version](https://img.shields.io/hexpm/v/exmoji.svg)](https://hex.pm/packages/exmoji)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/exmoji/)
 [![Total Download](https://img.shields.io/hexpm/dt/exmoji.svg)](https://hex.pm/packages/exmoji)
