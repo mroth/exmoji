@@ -6,10 +6,9 @@ defmodule Exmoji.Util.Unified do
   def _unified_to_char(uid) do
     uid
     |> String.split("-")
-    |> Enum.map( &(String.to_integer(&1, 16)) )
-    |> List.to_string
+    |> Enum.map(&String.to_integer(&1, 16))
+    |> List.to_string()
   end
-
 end
 
 defmodule Exmoji.Util.Char do
@@ -19,20 +18,18 @@ defmodule Exmoji.Util.Char do
   # methods, and also used as a fallback for unmatched values.
   def _char_to_unified(char) do
     char
-    |> String.codepoints
+    |> String.codepoints()
     |> Enum.map(&padded_hex_string/1)
     |> Enum.join("-")
-    |> String.upcase
+    |> String.upcase()
   end
 
   # produce a string representation of the integer value of a codepoint, in hex
   # this should be zero-padded to a minimum of 4 digits
-  defp padded_hex_string(<< cp_int_value :: utf8 >>) do
-    cp_int_value |> Integer.to_string(16) |> String.rjust(4,?0)
+  defp padded_hex_string(<<cp_int_value::utf8>>) do
+    cp_int_value |> Integer.to_string(16) |> String.rjust(4, ?0)
   end
-
 end
-
 
 defmodule Exmoji.Util do
   @moduledoc """
@@ -58,15 +55,14 @@ defmodule Exmoji.Util do
       "👾"
 
   """
-  for ec <- Exmoji.all, cp <- EmojiChar.codepoint_ids(ec) do
-    def unified_to_char( unquote(cp) ) do
-      unquote( Unified._unified_to_char(cp) )
+  for ec <- Exmoji.all(), cp <- EmojiChar.codepoint_ids(ec) do
+    def unified_to_char(unquote(cp)) do
+      unquote(Unified._unified_to_char(cp))
     end
   end
 
   # if not found, fallback
   def unified_to_char(uid), do: Unified._unified_to_char(uid)
-
 
   @doc """
   Convert a native bitstring glyph to its unified codepoint ID.
@@ -80,13 +76,12 @@ defmodule Exmoji.Util do
       "0023-FE0F-20E3"
 
   """
-  for ec <- Exmoji.all, cp <- EmojiChar.codepoint_ids(ec) do
-    def char_to_unified( unquote(Unified._unified_to_char(cp)) ) do
+  for ec <- Exmoji.all(), cp <- EmojiChar.codepoint_ids(ec) do
+    def char_to_unified(unquote(Unified._unified_to_char(cp))) do
       unquote(cp)
     end
   end
 
   # if not found, fallback
   def char_to_unified(uid), do: Char._char_to_unified(uid)
-
 end
