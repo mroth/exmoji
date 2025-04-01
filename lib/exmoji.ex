@@ -108,7 +108,7 @@ defmodule Exmoji do
   """
   def find_by_name(name) do
     name = String.upcase(name)
-    Enum.filter(@emoji_chars, &String.contains?(&1.name, name))
+    Enum.filter(@emoji_chars, &(is_binary(&1.name) && String.contains?(&1.name, name)))
   end
 
   @doc """
@@ -153,49 +153,4 @@ defmodule Exmoji do
   end
 
   defp _from_unified(_), do: nil
-
-  @doc """
-  Convert a unified ID directly to its bitstring glyph representation.
-
-  ## Example
-
-      iex> Exmoji.unified_to_char("1F47E")
-      "👾"
-
-  """
-  def unified_to_char(uid) do
-    uid
-    |> String.split("-")
-    |> Enum.map(&String.to_integer(&1, 16))
-    |> List.to_string()
-  end
-
-  @doc """
-  Convert a native bitstring glyph to its unified codepoint ID.
-
-  This is a conversion operation, not a match, so it may produce unexpected
-  results with different types of values.
-
-  ## Examples
-
-      iex> Exmoji.char_to_unified("👾")
-      "1F47E"
-
-      iex> Exmoji.char_to_unified("\x23\u{fe0f}\u{20e3}")
-      "0023-FE0F-20E3"
-
-  """
-  def char_to_unified(char) do
-    char
-    |> String.codepoints()
-    |> Enum.map(&padded_hex_string/1)
-    |> Enum.join("-")
-    |> String.upcase()
-  end
-
-  # produce a string representation of the integer value of a codepoint, in hex
-  # this should be zero-padded to a minimum of 4 digits
-  defp padded_hex_string(<<cp_int_value::utf8>>) do
-    cp_int_value |> Integer.to_string(16) |> String.pad_leading(4, "0")
-  end
 end

@@ -20,7 +20,7 @@ defmodule Exmoji.Scanner do
   """
   def scan(str) do
     bscan(str)
-    |> Enum.map(&Exmoji.char_to_unified/1)
+    |> Enum.map(&Exmoji.Util.char_to_unified/1)
     |> Enum.map(&Exmoji.from_unified/1)
   end
 
@@ -34,8 +34,13 @@ defmodule Exmoji.Scanner do
   #       new algorithm produces identical results.
   #
   # Thus it is kept as public so we can compare it in test...
-  fbs_pattern = Exmoji.chars(include_variants: true) |> Enum.join("|")
+  fbs_pattern =
+    Exmoji.chars(include_variants: true)
+    |> Enum.map(fn emoji_char -> Regex.escape(emoji_char) end)
+    |> Enum.join("|")
+
   @fbs_regexp Regex.compile!("(?:#{fbs_pattern})")
+
   @doc false
   def rscan(str) do
     Regex.scan(@fbs_regexp, str)
