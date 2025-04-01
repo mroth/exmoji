@@ -20,9 +20,10 @@ defmodule Exmoji.Mixfile do
 
   defp package do
     [
-      description: "Emoji encoding swiss army knife for dealing with Unicode "
-        <> "and other gotchas.",
-      maintainers: ["Matthew Rothenberg <mroth@mroth.info>"],
+      description:
+        "Emoji encoding swiss army knife for dealing with Unicode " <>
+          "and other gotchas.",
+      maintainers: ["Matthew Rothenberg <mroth@mroth.info>", "Fabian Becker <halfdan@xnorfz.de>"],
       licenses: ["MIT"],
       links: %{
         "GitHub" => @source_url
