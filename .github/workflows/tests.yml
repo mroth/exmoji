@@ -9,19 +9,31 @@ jobs:
     name: Ex${{matrix.elixir}}/OTP${{matrix.otp}}
     strategy:
       matrix:
-        elixir: ["1.15.8", "1.16.3", "1.17.3", "1.18.2"]
-        otp: ["25.3.2", "26.2.5", "27.2.4"]
-        exclude:
-          - elixir: "1.15.8"
-            otp: "27.2.4"
-          - elixir: "1.16.3"
-            otp: "27.2.4"
+        include:
+          - elixir: "1.15"
+            otp: "25"
+          - elixir: "1.18"
+            otp: "27"
+            lint: true
     steps:
       - uses: actions/checkout@v4
       - uses: erlef/setup-beam@v1
         with:
           otp-version: ${{matrix.otp}}
           elixir-version: ${{matrix.elixir}}
-      - run: mix deps.get
-      - run: mix compile --warnings-as-errors
-      - run: mix test
+      - name: Install dependencies
+        run: mix deps.get
+
+      - name: Compile
+        run: mix compile --warnings-as-errors
+
+      - name: Run tests
+        run: mix test
+
+      - name: checks that the mix.lock file has no unused deps
+        run: mix deps.unlock --check-unused
+        if: ${{ matrix.lint }}
+
+      - name: check if files are already formatted
+        run: mix format --check-formatted
+        if: ${{ matrix.lint }}
