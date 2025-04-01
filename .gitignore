@@ -24,3 +24,6 @@ exmoji-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Benchmark snapshots
+/bench/snapshots

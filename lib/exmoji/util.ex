@@ -27,7 +27,7 @@ defmodule Exmoji.Util.Char do
   # produce a string representation of the integer value of a codepoint, in hex
   # this should be zero-padded to a minimum of 4 digits
   defp padded_hex_string(<<cp_int_value::utf8>>) do
-    cp_int_value |> Integer.to_string(16) |> String.rjust(4, ?0)
+    cp_int_value |> Integer.to_string(16) |> String.pad_leading(4, "0")
   end
 end
 
@@ -72,7 +72,7 @@ defmodule Exmoji.Util do
       iex> Exmoji.Util.char_to_unified("👾")
       "1F47E"
 
-      iex> Exmoji.Util.char_to_unified("\x{23}\x{fe0f}\x{20e3}")
+      iex> Exmoji.Util.char_to_unified("\u0023\uFE0F\u20E3")
       "0023-FE0F-20E3"
 
   """
