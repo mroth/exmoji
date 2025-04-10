@@ -34,11 +34,13 @@ defmodule Exmoji.Scanner do
   #       new algorithm produces identical results.
   #
   # Thus it is kept as public so we can compare it in test...
-  fbs_pattern = Exmoji.chars(include_variants: true) |> Enum.join("|")
-  @fbs_regexp Regex.compile!("(?:#{fbs_pattern})")
   @doc false
+  @fbs_pattern Exmoji.chars(include_variants: true) |> Enum.join("|")
+
   def rscan(str) do
-    Regex.scan(@fbs_regexp, str)
+    "(?:#{@fbs_pattern})"
+    |> Regex.compile!()
+    |> Regex.scan(str)
     |> Enum.map(&List.first/1)
   end
 
